@@ -1,0 +1,30 @@
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './redux/reducers/testReducer';
+import { StyleSheet, View } from 'react-native';
+
+import App from './App';
+
+const store = createStore(reducers);
+
+
+export default class Root extends React.Component {
+  render() {
+    return (
+      <Provider store={ store }>
+        <App></App>
+      </Provider>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+  },
+});

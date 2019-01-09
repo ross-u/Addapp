@@ -1,0 +1,31 @@
+const Koa = require('koa');
+const app = new Koa();
+const bodyParser = require('koa-bodyparser');
+const static = require('koa-static');
+const router = require('./router');
+const mongoose = require('./db');
+
+// Config variables
+const { PORT, URI } = require('./config');
+
+
+// Error handling middleware
+// P E N D I N G
+
+// Middleware
+app.use(bodyParser());
+app.use(router.routes());
+
+(async () => {
+  try {
+    // Instantiate a Mongoose connection to the database, stored in `db.js`
+    mongoose.connect( URI, (err) => {
+      if (err) return console.log(err);
+      console.log(`Connected to the database.`);
+    });
+
+    app.listen( PORT, () => console.log(`Server running on port ${PORT}.`));
+  } catch (error) {
+    console.error('Error connecting to the db', error);
+  }
+})();
