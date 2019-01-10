@@ -1,37 +1,36 @@
 {
-  "photo": "",
-  "personal": {
-    "fName": "Uros",
-    "lName": "Cirkovic",
-    "age": 29,
-    "occupation": "Web Developer",
-    "birthday": 1234567890123,
-    "nationality": [],
-    "birthplace": {
-      "country": "Serbia",
-      "place": "Pozarevac",
-      "lng": "123",
-      "lat": "123"
+    "photo": "",
+    "personal": {
+      "fName": "Uros",
+      "lName": "Cirkovic",
+      "age": 29,
+      "occupation": "Web Developer",
+      "birthday": 1234567890123,
+      "nationality": [],
+      "birthplace": {
+        "country": "Serbia",
+        "place": "Pozarevac",
+        "lng": "123",
+        "lat": "123"
+      },
+      "currentLocation": {
+        "country": "Spain",
+        "place": "Barcelona",
+        "lng": "123",
+        "lat": "123"
+      }
     },
-    "location": {
-      "country": "Spain",
-      "place": "Barcelona",
-      "lng": "123",
-      "lat": "123"
-    }
-  },
-  "social": {
-    "linkedIn": "",
-    "facebook": "",
-    "instagram": "",
-    "twitter": "",
-    "blog": ""
-  },
-  "networking": {
-    "linkedIn": "",
-    "github": "",
-    "cv": "",
-    "website": ""
-  },
-  "contacts": []
+    "social": {
+      "facebook": "",
+      "instagram": "",
+      "twitter": "",
+      "blog": ""
+    },
+    "networking": {
+      "linkedIn": "",
+      "github": "",
+      "cv": "",
+      "website": ""
+    },
+    "contacts": []
 }

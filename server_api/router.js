@@ -1,12 +1,16 @@
 const Router = require('koa-router');
 const router = new Router();
 const fs = require('fs');
-const controller = require('./controllers/index');
+const controller = require('./controllers/controller');
 
 router.post('/user', controller.addUser);
 router.get('/user', controller.getAllUsers);
-router.put('/user/:id', controller.updateUser);
-router.delete('/user/:id', controller.deleteUser);
+router.get('/user/all', controller.getAllUsers);
+router.put('/user/add-contacts', controller.addUsersContacts);
+router.put("/user/:id", controller.updateUser);
+router.get('/user-contacts-array/:id', controller.getContactsArray);
+router.get('/user-friends', controller.getUsersFriends);
+router.delete('/user/delete/:id', controller.deleteUser);
 
 router.post('/contact', controller.addContact);
 router.get('/contact', controller.getAllContacts);

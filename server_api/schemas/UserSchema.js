@@ -1,5 +1,8 @@
 const mongoose = require('../db');
-const LocationSchema = require('./nestedSchemas/LocationSchema');
+const PersonalSchema = require('./nestedSchemas/PersonalSchema');
+const SocialSchema = require('./nestedSchemas/SocialSchema');
+const NetworkingSchema = require('./nestedSchemas/NetworkingSchema');
+const ContactObjectSchema = require('./nestedSchemas/ContactObjectSchema');
 
 
 // Schema constructor
@@ -7,15 +10,11 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema(
   {
-    fName: { type: String, default: '' },
-    lName: { type: String, default: '' },
-    email: { type: String, default: '' },
     photo: { type: String, default: '' },
-    age: { type: Number, min: 18, max: 110, default: 18 },
-    location: LocationSchema,
-    currentLocation: LocationSchema,
-    contactsDocument: { type: String, default: '' }
-    // contactsDocument: Schema.Types.ObjectId
+    personal: PersonalSchema,
+    social: SocialSchema,
+    networking: NetworkingSchema,
+    contacts: [ContactObjectSchema]
   }
 );
 
