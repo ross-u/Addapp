@@ -8,8 +8,8 @@ router.get('/user', controller.getAllUsers);
 router.get('/user/all', controller.getAllUsers);
 router.put('/user/add-contacts', controller.addUsersContacts);
 router.put("/user/:id", controller.updateUser);
-router.get('/user-contacts-array/:id', controller.getContactsArray);
-router.get('/user-friends', controller.getUsersFriends);
+router.get('/me/:id', controller.getMyProfile);
+router.get('/user-friends/:id', controller.getUsersFriends);
 router.delete('/user/delete/:id', controller.deleteUser);
 
 router.post('/contact', controller.addContact);

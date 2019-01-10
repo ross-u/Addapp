@@ -46,10 +46,10 @@ const addUsersContacts = async (ctx) => {
   }
 };
 
-const getContactsArray = async (ctx) => {
+const getMyProfile = async (ctx) => {
   const { id } = ctx.params;
   try {
-    ctx.body = await UserModel.getContactsArray(id);
+    ctx.body = await UserModel.getMyProfile(id);
     ctx.status = 200;
   } catch (err) {
     ctx.status = 500;
@@ -58,8 +58,10 @@ const getContactsArray = async (ctx) => {
 };
 
 const getUsersFriends = async (ctx) => {
+  const { id } = ctx.params;
   try {
-    ctx.body = await UserModel.getUsersFriends(ctx.request.body);
+    const myProfile = await UserModel.getMyProfile(id);
+    ctx.body = await UserModel.getUsersFriends(myProfile);
     ctx.status = 200;
   } catch (err) {
     ctx.status = 500;
@@ -127,7 +129,7 @@ module.exports = {
   getAllUsers,
   updateUser,
   addUsersContacts,
-  getContactsArray,
+  getMyProfile,
   getUsersFriends,
   deleteUser,
 

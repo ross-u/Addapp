@@ -28,20 +28,19 @@ const addUsersContacts = (id, friendContact_id) => {
   );
 };
 
-const getUsersFriends = (usersContactsRaw) => {
+const getMyProfile = (id) => {
+  return User.find( { _id: id } );
+};
 
-  const idAndPermisionsArr = usersContactsRaw[0].contacts;
-  const friendsIdArr = idAndPermisionsArr.map( contact => contact.friendContact_id);
-  console.log('FRIENDS IDS ARRAY',friendsIdArr);
+const getUsersFriends = (myProfileRaw) => {  
+  const contactsArray = myProfileRaw[0].contacts;
+  const idArray = contactsArray.map( contact => contact.friendContact_id);
 
   return User.find({
-    '_id': { $in : friendsIdArr} 
+    '_id': { $in : idArray} 
   });
 }
 
-const getContactsArray = (id) => {
-  return User.find( { _id: id }, { contacts: 1 } );
-};
 
 
 const deleteUser = (id) => {
@@ -53,7 +52,7 @@ module.exports = {
   getAllUsers,
   updateUser,
   addUsersContacts,
-  getContactsArray,
+  getMyProfile,
   getUsersFriends,
   deleteUser
 };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, Alert, StyleSheet, Button } from 'react-native';
 // import { Button } from 'react-native-elements';
 
-import ContactViewTab from './ContactTab';
+import ContactTab from './ContactTab';
 
 export default class ContactsScrollPanel extends Component {
 
@@ -20,14 +20,13 @@ export default class ContactsScrollPanel extends Component {
   }
 
   render() {
-
-    const names = ['Bob', 'Rob', 'Sarah', 'Amy', 'John'];
+    const { contacts } = this.props;
 
     return (
       <View style={styles.container}>
         <ScrollView>
-          {names.map( (name, i) => 
-            { return <ContactViewTab name={name} data={'test'} key={i} ></ContactViewTab> })
+          {contacts.map( (contact, i) => 
+            { return <ContactTab contact={contact} data={'test'} key={i} ></ContactTab> })
           }
         </ScrollView>
       </View>

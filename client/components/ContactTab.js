@@ -6,18 +6,25 @@ import { connect } from 'react-redux';
 
 class ContactTab extends Component {
   render() {
-    const name = this.props.name ? this.props.name : 'First Name'
+    const { fName } = this.props.contact.personal;
+    const {photo} = this.props.contact;
     return (
       <TouchableOpacity
         style={styles.box}
         // `props.navigation` is being accessed with react-navigation's -> withNavigation()
-        onPress={() => this.props.navigation.navigate('ProfileView')}
+        onPress={() => this.props.navigation.navigate('ProfileView',{
+          contact: this.props.contact
+        }
+        )}
       >
         <Avatar
           small
+          rounded
+          raised
+          source={{ uri: photo }}
           activeOpacity={0.7}
         />
-        <Text style={styles.text}> {name}</Text>
+        <Text style={styles.text}> {fName}</Text>
       </TouchableOpacity>
     )
   }
@@ -32,7 +39,7 @@ const styles = StyleSheet.create({
     height: 60,
     padding: 10,
     marginBottom: 10,
-    backgroundColor: 'skyblue',
+    backgroundColor: '#ecf0f1',
   },
   text: {
     color: '#4A90E2',

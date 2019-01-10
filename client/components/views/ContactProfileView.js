@@ -15,18 +15,26 @@ export default class ContactProfileView extends Component {
   };
 
   render() {
+    const { navigation } = this.props;
+    const contact = navigation.getParam('contact', 'some default value');
+    const { fName, lName } = contact.personal;
+    const {photo} = contact;
     return (
       <View style={styles.container}>
         <View style={styles.contactsWrapper}>
 
-          <Text> {this.props.name}</Text>   
           <Avatar
             xlarge
             rounded
-            source={{ uri: "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg" }}
+            source={{ uri: photo }}
             onPress={() => console.log("Works!")}
             activeOpacity={0.7}
           />
+          <Text
+            style={styles.name}
+          >
+            {`${fName} ${lName}`}
+          </Text> 
 
         </View>
         <ContactActions></ContactActions>
@@ -45,23 +53,8 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center'
   },
-  searchWrapper: {
-    padding: 10,
+  name: {
+    fontSize: 38,
     alignItems: 'center'
   },
-  boxSmall: {
-    width: 200,
-    height: 60,
-    marginBottom: 10,
-    marginRight: 10,
-    backgroundColor: 'skyblue',
-  },
-  boxLarge: {
-    height: 50,
-    backgroundColor: 'steelblue',
-  },
-  contactActions: {
-    justifyContent: 'center',
-    width: 200
-  }
 })

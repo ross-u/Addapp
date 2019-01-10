@@ -1,17 +1,20 @@
 import React from 'react';
+
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './redux/reducers/userReducer';
-import { StyleSheet, View, Text } from 'react-native';
+
+import { StyleSheet, View } from 'react-native';
 
 import { createStackNavigator, createAppContainer } from "react-navigation";
+
 
 import Dashboard from './components/views/DashboardView';
 import ContactProfileView from './components/views/ContactProfileView';
 import ContactTab from './components/ContactTab';
 import AddContactView from './components/views/AddQRContactView';
 import FindView from './components/views/FindView';
-import Headers from './components/Headers';
+import CreateProfileView from './components/views/CreateProfileView';
 
 const store = createStore(
   reducers,
@@ -28,11 +31,14 @@ const RootStack = createStackNavigator(
     ProfileView: ContactProfileView,  //  ProfileView: {screen : ContactProfileView } 
     ContactTab: ContactTab,  //  ContactTab: {screen : ContactTab}
     AddContactView: AddContactView,
-    FindView: FindView
+    FindView: FindView,
+    CreateProfileView: CreateProfileView
   },
   {
     // options object
     initialRouteName: 'Dashboard',  //  specifies what the initial route in a stack
+    // initialRouteName: 'CreateProfileView',  //  specifies what the initial route in a stack
+
   }
 );
 
