@@ -4,7 +4,7 @@ import { Avatar, Button} from 'react-native-elements';
 import { Formik } from 'formik';
 import DatePicker from 'react-native-datepicker';
 import { connect } from 'react-redux';
-import { storeContacts, storeMyId }  from './../redux/actions/actions';
+import { storeContacts, storeMyId }  from '../redux/actions/actions';
 
 const { width } = Dimensions.get('window');
 const minDate= "1900-05-01";

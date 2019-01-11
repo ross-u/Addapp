@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 import { connect } from 'react-redux';
+import { storeContacts, storeMyId, storeMyProfile }  from '../redux/actions/actions';
 
-import ContactsScrollPanel from '../ContactsScrollPanel';
-import ContactActions from '../buttons/ContactActionsButtons';
-import HeadersActions from '../HeadersActions';
+import HeadersActions from './../components/HeadersActions';
+import ContactsScrollPanel from './../components/ContactsScrollPanel';
+import ContactActions from './../components/buttons/DashboardActions';
 
-import { storeContacts, storeMyId }  from '../../redux/actions/actions';
 
 const BASE_URL = "http://192.168.1.149:3000/user-friends";
 
@@ -22,27 +22,27 @@ class Dashboard extends Component {
     console.log('logContacs', result);
   };
 
-
-
   getMyContacts = () => {
-    fetch(`${BASE_URL}/${this.props.me}`, {
+    fetch(`${BASE_URL}/${this.props.me._id}`, {
       method: "GET",
       headers: { 'Content-Type': 'application/json' }
     })
     .then(rawData => rawData.json())
-    .then( (parsedContacts) => {
-      this.props.storeContacts(parsedContacts);
+    .then( (contacts) => {
+      // splice last item in the contacts array, as USERS actuall profile was pushed within `getUsersFriends` as last to avoid making double request
+      let myProfile = contacts.splice(contacts.length -1, 1)
+      this.props.storeMyProfile(myProfile[0]);
+      this.props.storeContacts(contacts);
     });
   };
   
   componentDidMount () {
-    this.props.storeMyId(this.props.me);
     this.getMyContacts();
   }
   
   render() {
     const { contacts } = this.props;
-    // console.log('CONTATS', contacts);
+    // console.log('CONTACTS', contacts);
 
     return (
       <View style={styles.container}>
@@ -53,16 +53,6 @@ class Dashboard extends Component {
             contacts={contacts}
           />
         </View>
-
-        <Button
-          small
-          buttonStyle={ { marginBottom: 10 } }
-          onPress={() =>
-            this.props.navigation.navigate('CreateProfileView')}
-          raised
-          icon={{ name: 'cached' }}
-          title='Create Profile'
-        />
         
         <ContactActions></ContactActions>
 
@@ -108,7 +98,8 @@ const mapStateToProps = (state) => ({
 
 const mapActionToProps = (dispatch) => ({
   storeContacts: ((contacts) => dispatch(storeContacts(contacts))),
-  storeMyId: ((id) => dispatch(storeMyId(id)))
+  storeMyId: ((id) => dispatch(storeMyId(id))),
+  storeMyProfile: ((myProfile) => dispatch(storeMyProfile(myProfile)))
 })
 
 export default connect(mapStateToProps, mapActionToProps)(Dashboard);

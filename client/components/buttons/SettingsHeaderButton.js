@@ -9,9 +9,10 @@ class SettingsHeaderButton extends Component {
     return (
       <View style={styles.settingsBtn}>
         <Icon
-          name='ellipsis-v'
+          name='user-circle-o'
           type='font-awesome'
-          onPress={() => console.log('Pressed: Settings header BTN')} />
+          size={28}
+          onPress={() => this.props.navigation.navigate('MyProfile')} />
       </View>
     );
   };
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
   settingsBtn: {
     padding: 5,
     marginRight: 5,
-    marginTop: 3
+    marginTop: 0
 
   }
 });

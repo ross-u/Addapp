@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { Button, Avatar } from 'react-native-elements';
 
-import ContactsScrollView from '../ContactsScrollPanel';
-import NavigationRowBottom from '../NavigationRowBottom';
-import ContactActions from '../buttons/ContactActionsButtons';
-import SearchBarHeader from '../buttons/SearchBarHeader';
+import NavigationRowBottom from './../components/NavigationRowBottom';
+import DashboardActions from './../components/buttons/DashboardActions';
+import SearchBarHeader from './../components/buttons/SearchBarHeader';
 
 export default class FindView extends Component {
   static navigationOptions = {
@@ -19,7 +17,7 @@ export default class FindView extends Component {
           <Text> FIND VIEW</Text>
         </View>
         
-        <ContactActions></ContactActions>
+        <DashboardActions></DashboardActions>
         <NavigationRowBottom />
       </View>
     )

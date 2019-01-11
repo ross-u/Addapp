@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 export default class NavigationRowBottom extends Component {
@@ -7,21 +7,23 @@ export default class NavigationRowBottom extends Component {
     return (
       <View style={styles.navigationContainer}>
         <Icon style={styles.icons}
-          name='rowing'
+          type='entypo'
+          name='network'
           size={36}
           raised={true}
         />
 
         <Icon style={styles.icons}
-          name='g-translate'
+          type='font-awesome'
+          name='info'
           color='#00aced'
           size={36}
           raised={true}
         />
 
         <Icon style={styles.icons}
-          name='sc-telegram'
-          type='evilicon'
+          type='font-awesome'
+          name='font-awesome'
           color='#517fa4'
           size={36}
           raised={true}
@@ -35,7 +37,6 @@ const styles = StyleSheet.create({
   navigationContainer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    backgroundColor: 'steelblue',
   },
   icons: {
     

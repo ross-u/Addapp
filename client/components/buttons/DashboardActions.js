@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button, Header } from 'react-native-elements';
+import { Button, Avatar } from 'react-native-elements';
 import { withNavigation } from 'react-navigation';
 
-class ContactActions extends Component {
+class DashboardActions extends Component {
   state = {
     buttonsVisible: true
   }
@@ -16,18 +16,20 @@ class ContactActions extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.buttonWrapper}>
-          {/* <Button
-            buttonStyle={styles.button}
-            onPress={ () => this.props.navigation.navigate('FindView')}
+          <Avatar
+            onPress={ () => this.props.navigation.navigate('MyProfile')}
+            large
+            rounded
             raised
-            title='FIND' 
-            fontSize={24}
-            /> */}
+            icon={{ name: 'share', size: 36 }}
+            />
         </View>
+
+        
 
         <View style={styles.buttonWrapper}>
           <Button
-            onPress={ () => this.props.navigation.navigate('AddContactView')}
+            onPress={ () => this.props.navigation.navigate('AddContactScanQRCView')}
             buttonStyle={styles.button}
             raised
             icon={{ name: 'person-add', size: 30 }}
@@ -51,7 +53,12 @@ const styles = StyleSheet.create({
   },
   button :{
     width: 225,
+  },
+  buttonRound :{
+    width: 100,
+    height: 100,
+    borderRadius: 100
   }
 })
 
-export default ContactActions = withNavigation(ContactActions);
+export default DashboardActions = withNavigation(DashboardActions);

@@ -8,13 +8,15 @@ import { StyleSheet, View } from 'react-native';
 
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
-
-import Dashboard from './components/views/DashboardView';
-import ContactProfileView from './components/views/ContactProfileView';
+import LoginView from './views/0-LoginView';
+import CreateProfile from './views/1-CreateProfileView';
+import Dashboard from './views/2-DashboardView';
+import MyProfile from './views/3-MyProfileView';
+import ShareQRCodeView from './views/4-ShareQRCodeView';
+import AddContactScanQRCView from './views/5-AddContactScanQRCView';
+import ShowContactProfile from './views/6-ShowContactProfileView';
+import FindView from './views/FindView';
 import ContactTab from './components/ContactTab';
-import AddContactView from './components/views/AddQRContactView';
-import FindView from './components/views/FindView';
-import CreateProfileView from './components/views/CreateProfileView';
 
 const store = createStore(
   reducers,
@@ -27,18 +29,22 @@ const store = createStore(
 const RootStack = createStackNavigator(
   {
     // route configuration object
-    Dashboard: Dashboard, // Home: { screen : HomeScreen }
-    ProfileView: ContactProfileView,  //  ProfileView: {screen : ContactProfileView } 
-    ContactTab: ContactTab,  //  ContactTab: {screen : ContactTab}
-    AddContactView: AddContactView,
+    LoginView: LoginView, // LoginView: { screen : LoginView }
+    CreateProfile: CreateProfile,
+    Dashboard: Dashboard, // Dashboard: { screen : Dashboard }
+    MyProfile: MyProfile,
+    ShareQRCode: ShareQRCodeView,
+    AddContactScanQRCView: AddContactScanQRCView,
+    ShowContactProfile: ShowContactProfile, 
+    ContactTab: ContactTab,  
     FindView: FindView,
-    CreateProfileView: CreateProfileView
   },
   {
     // options object
-    initialRouteName: 'Dashboard',  //  specifies what the initial route in a stack
-    // initialRouteName: 'CreateProfileView',  //  specifies what the initial route in a stack
-
+    //  specifies what is the initial route in a stack
+    // initialRouteName: 'Dashboard',  
+    initialRouteName: 'LoginView',
+    // initialRouteName: 'ProfileView',  
   }
 );
 

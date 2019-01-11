@@ -12,7 +12,7 @@ class ContactTab extends Component {
       <TouchableOpacity
         style={styles.box}
         // `props.navigation` is being accessed with react-navigation's -> withNavigation()
-        onPress={() => this.props.navigation.navigate('ProfileView',{
+        onPress={() => this.props.navigation.navigate('ShowContactProfile',{
           contact: this.props.contact
         }
         )}

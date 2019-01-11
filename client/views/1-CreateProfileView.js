@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Button, TextInput } from 'react-native';
 import { Avatar, Card } from 'react-native-elements';
-import FormCreateProfile from '../FormCreateProfile';
+import FormCreateProfile from './../components/CreateProfile';
 
 export default class CreateProfileView extends Component {
   static navigationOptions = {

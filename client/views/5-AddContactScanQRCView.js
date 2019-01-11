@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Dimensions, View, StyleSheet, Text, Alert } from 'react-native';
 import { Button, Avatar, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import { BarCodeScanner, Permissions, Constants, Camera } from 'expo';
+import { withNavigation } from 'react-navigation';
+import { decompressProfile } from './../modules/profile-obj-compress';
 
-import HeadersActions from '../HeadersActions';
-import AddQRContactButton from '../buttons/AddQRContactButton';
+import HeadersActions from '../components/HeadersActions';
 
 const { width } = Dimensions.get('window');
 
-export default class BarcodeScanner extends React.Component {
+class BarcodeScanner extends React.Component {
   static navigationOptions = {
     title: 'Add Contact',
     headerRight: (
@@ -31,7 +32,12 @@ export default class BarcodeScanner extends React.Component {
   };
 
   _handleBarCodeRead = data => {
-    console.log('Scan successful!', JSON.stringify(data))
+    let dataParsed = JSON.parse(data.data);
+    let decompressed = decompressProfile(dataParsed);
+    console.log('Scan successful!', decompressed);
+    this.props.navigation.navigate('ShowContactProfile', {
+      newContact: decompressed
+    });
   };
 
   render() {
@@ -72,4 +78,6 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center'
   },
-})
+});
+
+export default BarcodeScanner = withNavigation(BarcodeScanner);
