@@ -62,6 +62,8 @@ const getUsersFriends = async (ctx) => {
   try {
     const myProfile = await UserModel.getMyProfile(id);
     ctx.body = await UserModel.getUsersFriends(myProfile);
+    ctx.body.push(myProfile[0]);
+    console.log('CONTROLLER CTX.BODY', ctx.body);
     ctx.status = 200;
   } catch (err) {
     ctx.status = 500;
