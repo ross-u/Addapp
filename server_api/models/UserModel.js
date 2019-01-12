@@ -18,14 +18,17 @@ const updateUser = (updatedUserObject) => {
   return User.findByIdAndUpdate(id, updatedUserObject);
 };
 
-const addUsersContacts = (id, friendContact_id) => {
-  const permissionsArr = new Array(17).fill(true);
-  const newContact = { friendContact_id: friendContact_id, permissions: permissionsArr };
+const addContacts = async (id, contactsIdArray) => {
 
-  return User.updateMany(
+  return User.update(
     { _id: id },
-    { $push: { contacts: { $each: [newContact]} } }
+    { $push: { contacts: { $each: [...contactsIdArray]} } }
   );
+
+  // return User.find({
+  //   '_id': { $in : idArray} 
+  // });
+
 };
 
 const getMyProfile = (id) => {
@@ -33,6 +36,7 @@ const getMyProfile = (id) => {
 };
 
 const getUsersFriends = (myProfileRaw) => {  
+  // get the `contacts` array from the profile
   const contactsArray = myProfileRaw[0].contacts;
   const idArray = contactsArray.map( contact => contact.friendContact_id);
 
@@ -51,7 +55,7 @@ module.exports = {
   addUser,
   getAllUsers,
   updateUser,
-  addUsersContacts,
+  addContacts,
   getMyProfile,
   getUsersFriends,
   deleteUser

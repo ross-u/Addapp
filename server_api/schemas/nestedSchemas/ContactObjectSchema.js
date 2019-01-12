@@ -6,7 +6,6 @@ const Schema = mongoose.Schema;
 const ContactObjectSchema = new Schema(
   {
     friendContact_id: Schema.Types.ObjectId,
-    permissions: [Boolean],
   },
   { _id : false }
 );

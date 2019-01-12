@@ -11,7 +11,7 @@ const PersonalSchema = new Schema(
     age: { type: Number, min: 18, max: 110, default: 18 },
     occupation: { type: String, default: '' },
     birthday: { type: String, default: '' },
-    nationality: [ { type: String, default: '' } ],
+    nationality: { type: String, default: '' },
     birthplace: LocationSchema,
     currentLocation: LocationSchema,
   },

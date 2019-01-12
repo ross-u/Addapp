@@ -1,0 +1,51 @@
+{
+"0":"5c37b33210774810473a5361",
+"1":"https://github.com/ross-u",
+"2":  "popokatepetllongemailname@longemailservername.com",
+"3":  "https://www.qrrrrrrrrrrrrrr-code-generator.com/longwebsitenamegoesheredude",
+"4":  "https://www.linkedin.com/in/rossulbricht",
+"5":  "Spain",
+"6":  "Barcelona",
+"7":  "Gabe",
+"8":  "Riera",
+"9":  "Web Developer",
+"10":  "https://www.w3schools.com/w3images/avatar2.png"
+}
+
+{
+  "_id": "",
+  "contacts": [],
+  "networking": {
+    "cv": "",
+    "github": "",
+    "linkedIn": "",
+    "website": "",
+  },
+  "personal": {
+    "age": 1234,
+    "birthday": "",
+    "birthplace": {
+      "country": "",
+      "lat": 0,
+      "lng": 0,
+      "place": "",
+    },
+    "currentLocation": {
+      "country": "",
+      "lat": 0,
+      "lng": 0,
+      "place": "",
+    },
+    "fName": "",
+    "lName": "",
+    "nationality": [],
+    "occupation": "",
+  },
+  "photo": "",
+  "social": {
+    "blog": "",
+    "facebook": "",
+    "instagram": "",
+    "twitter": "",
+  },
+}
