@@ -1,36 +1,28 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Alert, StyleSheet, Button } from 'react-native';
-// import { Button } from 'react-native-elements';
+import { View, ScrollView, ActivityIndicator, StyleSheet, Button } from 'react-native';
+import { connect } from 'react-redux';
+import { storeContacts }  from '../redux/actions/actions';
 
 import ContactTab from './ContactTab';
 
-export default class ContactsScrollPanel extends Component {
-
-  buttonTest = () => {
-    
-    Alert.alert(
-      'Alert Title',
-      'My Alert Msg',
-      [
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
-        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-      ],
-      { cancelable: false }
-    )
-  }
-
+class ContactsScrollPanel extends Component {
+  
   render() {
     const { contacts } = this.props;
 
     return (
-      <View style={styles.container}>
-        <ScrollView>
-          {contacts.map( (contact, i) => 
-            { return <ContactTab contact={contact} data={'test'} key={i} ></ContactTab> })
-          }
-        </ScrollView>
-      </View>
-    )
+    <View style={styles.container}>
+      {contacts.length > 0
+        ? (<ScrollView>
+            {contacts.map( (c) => (<ContactTab contact={c} key={c._id} /> ))}
+          </ScrollView>) 
+
+        :(<View style={styles.spinnerContainer}>
+            <ActivityIndicator size={70} color="#487eb0" />
+          </View>
+      )}
+    </View>
+    );
   }
 }
 
@@ -39,15 +31,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  boxSmall: {
-    width: 200,
-    height: 60,
-    marginBottom: 10,
-    backgroundColor: 'skyblue',
+  spinnerContainer: {
+    flex: 1,
+    justifyContent: 'center'
   },
-  boxLarge: {
+});
 
-    height: 50,
-    backgroundColor: 'steelblue',
-  },
+const mapStateToProps = (state) => ({
+  contacts: state.contacts
 })
+
+const mapActionToProps = (dispatch) => ({
+  storeContacts: ((contacts) => dispatch(storeContacts(contacts)))
+})
+
+export default connect(mapStateToProps, mapActionToProps)(ContactsScrollPanel);

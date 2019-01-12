@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Dimensions, Keyboard } from 'react-native';
+import { Avatar, Button } from 'react-native-elements';
 
 import LoginActions from './../components/buttons/LoginActions';
 import { connect } from 'react-redux';
 import { storeMyProfile, storeMyId }  from '../redux/actions/actions';
+import { Formik } from 'formik';
+import { TextField } from 'react-native-material-textfield';
 
 const BASE_URL = "http://192.168.1.149:3000/me";
-
+const { width } = Dimensions.get('window');
 
 class LoginView extends Component {
   static navigationOptions = {
@@ -40,12 +43,19 @@ class LoginView extends Component {
   
   render() {
     const { contacts } = this.props;
-    // console.log('CONTATS', contacts);
 
     return (
       <View style={styles.container}>
         <Text style={styles.logoLarge}> {'appname.'} </Text>
-        <LoginActions></LoginActions>
+              <Avatar
+                large
+                rounded
+                activeOpacity={0.7} 
+                source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/1024px-Circle_Davys-Grey_Solid.svg.png" }}
+                onPress={() => console.log("Works!")} 
+              />
+        
+          <LoginActions></LoginActions>
       </View>
     )
   }
@@ -58,6 +68,12 @@ const styles = StyleSheet.create({
   },
   logoLarge: {
     fontSize: 40
+  },
+  wrapper: {
+    alignContent: 'center',
+    width: width - 100
+  },
+  formField: {
   }
 });
 

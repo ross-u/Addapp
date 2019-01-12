@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Button, TextInput } from 'react-native';
-import FormCreateProfile from './../components/CreateProfile';
+import FormCreateProfileAddInfo from '../components/CreateProfileAddInfo';
 
-export default class CreateProfileView extends Component {
+export default class CreateProfileAddInfoView extends Component {
   static navigationOptions = {
-    title: 'Create profile',
+    title: 'Create profile - Add Info',
   };
 
   render() {
     return <View style={styles.container}>
         <View style={styles.wrapper}>
-            <FormCreateProfile />
+            <FormCreateProfileAddInfo />
         </View>
       </View>;
   }
@@ -18,7 +18,6 @@ export default class CreateProfileView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
     flex: 1,
   },
   wrapper: {

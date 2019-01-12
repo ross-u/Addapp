@@ -5,8 +5,18 @@
  */
 
 export const storeContacts = (contacts) => (
-  { type: 'STORE_CONTACTS', contacts }
+  { type: 'STORE_ALL_CONTACTS', contacts }
 );
+
+export const storeNewContact = (newContact) => (
+  { type: 'STORE_NEW_CONTACT', newContact }
+);
+
+export const addIdToOfflineList = (newContactId) => (
+  { type: 'ADD_CONTACT_ID_TO_OFFLINE_LIST', newContactId }
+);
+
+export const resetOfflineList = () => ({ type: 'RESET_OFFLINE_LIST'});
 
 export const storeMyId = (id) => (
   { type: 'STORE_MY_ID', id }

@@ -14,9 +14,11 @@ import Dashboard from './views/2-DashboardView';
 import MyProfile from './views/3-MyProfileView';
 import ShareQRCodeView from './views/4-ShareQRCodeView';
 import AddContactScanQRCView from './views/5-AddContactScanQRCView';
-import ShowContactProfile from './views/6-ShowContactProfileView';
+import AddNewContactView from './views/6-AddNewContactView';
+import ShowContactProfile from './views/7-ShowContactProfileView';
 import FindView from './views/FindView';
 import ContactTab from './components/ContactTab';
+import CreateProfileAddInfoView from './views/2-CreateProfileAddInfoView';
 
 const store = createStore(
   reducers,
@@ -24,27 +26,29 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-// takes a "route configuration object" and  "options object" and returns a React component
-// RootStack becomes a Navigation Stack component
+// takes a "Route Config object" & "Options object" and returns a React component
+// RootStack is passed to createAppContainer()
 const RootStack = createStackNavigator(
-  {
-    // route configuration object
+
+  { // Route Config object
     LoginView: LoginView, // LoginView: { screen : LoginView }
     CreateProfile: CreateProfile,
+    CreateProfileAddInfo: CreateProfileAddInfoView,
     Dashboard: Dashboard, // Dashboard: { screen : Dashboard }
     MyProfile: MyProfile,
     ShareQRCode: ShareQRCodeView,
     AddContactScanQRCView: AddContactScanQRCView,
+    AddNewContact: AddNewContactView,
     ShowContactProfile: ShowContactProfile, 
     ContactTab: ContactTab,  
     FindView: FindView,
   },
-  {
-    // options object
-    //  specifies what is the initial route in a stack
+  { // Options object - specifies what is the initial route in a stack
+    // initialRouteName: 'LoginView',
+    initialRouteName: 'CreateProfile',
     // initialRouteName: 'Dashboard',  
-    initialRouteName: 'LoginView',
-    // initialRouteName: 'ProfileView',  
+    // initialRouteName: 'ProfileView',
+    // initialRouteName: 'AddContactScanQRCView',  
   }
 );
 

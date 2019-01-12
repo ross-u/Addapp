@@ -24,10 +24,8 @@ export default class ContactProfileView extends Component {
 
   render() {
     const { navigation } = this.props;
-    let contact = navigation.getParam('newContact');
+    let contact = navigation.getParam('contact');
 
-    console.log('NEW CONTACT', contact);
-    
     const { fName, lName, occupation, currentLocation: loc, email, birthplace  } = contact.personal;
     const { facebook, instagram, twitter, blog } = contact.social;
     const { linkedIn, github, cv, website } = contact.networking;

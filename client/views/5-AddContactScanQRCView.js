@@ -3,6 +3,7 @@ import { Dimensions, View, StyleSheet, Text, Alert } from 'react-native';
 import { Button, Avatar, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import { BarCodeScanner, Permissions, Constants, Camera } from 'expo';
 import { withNavigation } from 'react-navigation';
+
 import { decompressProfile } from './../modules/profile-obj-compress';
 
 import HeadersActions from '../components/HeadersActions';
@@ -35,7 +36,7 @@ class BarcodeScanner extends React.Component {
     let dataParsed = JSON.parse(data.data);
     let decompressed = decompressProfile(dataParsed);
     console.log('Scan successful!', decompressed);
-    this.props.navigation.navigate('ShowContactProfile', {
+    this.props.navigation.navigate('AddNewContact', {
       newContact: decompressed
     });
   };

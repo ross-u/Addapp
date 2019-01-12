@@ -5,7 +5,7 @@ import { storeContacts, storeMyId, storeMyProfile }  from '../redux/actions/acti
 
 import HeadersActions from './../components/HeadersActions';
 import ContactsScrollPanel from './../components/ContactsScrollPanel';
-import ContactActions from './../components/buttons/DashboardActions';
+import DashboardActions from './../components/buttons/DashboardActions';
 
 
 const BASE_URL = "http://192.168.1.149:3000/user-friends";
@@ -16,13 +16,9 @@ class Dashboard extends Component {
     headerRight: (
       <HeadersActions></HeadersActions>),
   };
-  
-  logContacs = () => {
-    result = this.props.contacts;
-    console.log('logContacs', result);
-  };
 
   getMyContacts = () => {
+    console.log('Dashboard - fetch');
     fetch(`${BASE_URL}/${this.props.me._id}`, {
       method: "GET",
       headers: { 'Content-Type': 'application/json' }
@@ -42,19 +38,18 @@ class Dashboard extends Component {
   
   render() {
     const { contacts } = this.props;
-    // console.log('CONTACTS', contacts);
+     //console.log('CONTACTS', contacts);
 
-    return (
-      <View style={styles.container}>
-      
-        <View style={styles.contactsWrapper}>
-          <ContactsScrollPanel
-            navigation={this.props.navigation}
-            contacts={contacts}
-          />
+     return (
+       <View style={styles.container}>
+
+        <View style={styles.scrollWrapper}>
+          <ContactsScrollPanel/>
         </View>
         
-        <ContactActions></ContactActions>
+        <View style={styles.actionsWrapper}>
+          <DashboardActions></DashboardActions>
+        </View>
 
       </View>
     )
@@ -65,10 +60,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  contactsWrapper: {
+  scrollWrapper: {
     flex: 1,
     padding: 10,
+    height: 200,
     alignItems: 'center'
+  },
+  actionsWrapper: {
+    height: 160,
   },
   searchWrapper: {
     padding: 10,
@@ -94,12 +93,12 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => ({
   contacts: state.contacts,
   me: state.me
-})
+});
 
 const mapActionToProps = (dispatch) => ({
   storeContacts: ((contacts) => dispatch(storeContacts(contacts))),
   storeMyId: ((id) => dispatch(storeMyId(id))),
   storeMyProfile: ((myProfile) => dispatch(storeMyProfile(myProfile)))
-})
+});
 
 export default connect(mapStateToProps, mapActionToProps)(Dashboard);

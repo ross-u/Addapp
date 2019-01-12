@@ -3,6 +3,9 @@ import { View, StyleSheet } from 'react-native';
 import { Button, Avatar } from 'react-native-elements';
 import { withNavigation } from 'react-navigation';
 
+import { connect } from 'react-redux';
+import { storeContacts }  from './../../redux/actions/actions';
+
 class DashboardActions extends Component {
   state = {
     buttonsVisible: true
@@ -17,7 +20,9 @@ class DashboardActions extends Component {
       <View style={styles.container}>
         <View style={styles.buttonWrapper}>
           <Avatar
-            onPress={ () => this.props.navigation.navigate('MyProfile')}
+            onPress={ () => this.props.navigation.navigate('MyProfile', {
+              contacts: this.props.contacts
+            })}
             large
             rounded
             raised
@@ -61,4 +66,13 @@ const styles = StyleSheet.create({
   }
 })
 
-export default DashboardActions = withNavigation(DashboardActions);
+const mapStateToProps = (state) => ({
+  contacts: state.contacts
+})
+
+const mapActionToProps = (dispatch) => ({
+  storeContacts: ((contacts) => dispatch(storeContacts(contacts)))
+})
+
+const DashboardActionsWithNav = withNavigation(DashboardActions);
+export default connect(mapStateToProps, mapActionToProps)(DashboardActionsWithNav);
