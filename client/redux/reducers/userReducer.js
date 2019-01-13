@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
 
-const meStore = {
-  _id: "5c37b33210774810473a5361"
-}
+const emptyProfile = {}
 
 const contacts = (state = [], action) => {
   switch (action.type) {
@@ -22,6 +20,7 @@ const contacts = (state = [], action) => {
 const offlineContacts = (state = [], action) => {
   switch (action.type) {
     case 'ADD_CONTACT_ID_TO_OFFLINE_LIST':
+    console.log('in Reducer ADD_CONTACT_ID_TO_OFFLINE_LIST');
       let contactObject = {
         friendContact_id: action.newContactId
       };
@@ -35,10 +34,20 @@ const offlineContacts = (state = [], action) => {
   }
 };
 
-const me = (state = meStore, action) => {
+const myID = (state = '', action) => {
   switch (action.type) {
     case 'STORE_MY_ID':
       return action.id;
+
+    default:
+      return state;
+  }
+};
+
+const myProfile = (state = emptyProfile, action) => {
+  switch (action.type) {
+    // case 'STORE_MY_ID':
+    //   return action.id;
 
     case 'STORE_MY_PROFILE':
       return Object.assign({}, action.myProfile);
@@ -48,7 +57,7 @@ const me = (state = meStore, action) => {
   }
 };
 
-const meJSONString = (state = '', action) => {
+const myProfileJSONString = (state = '', action) => {
   switch (action.type) {
     case 'STORE_MY_PROFILE_AS_JSON_STRING':
       return action.JSONString;
@@ -60,9 +69,10 @@ const meJSONString = (state = '', action) => {
 
 const reducers = combineReducers({
   contacts,
-  me,
+  myID,
+  myProfile,
   offlineContacts,
-  meJSONString
+  myProfileJSONString
 });
 
 export default reducers;

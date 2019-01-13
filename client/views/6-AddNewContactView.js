@@ -6,7 +6,7 @@ import { storeNewContact, addIdToOfflineList, resetOfflineList, storeMyProfile, 
 
 import HeadersActions from '../components/HeadersActions';
 
-const BASE_URL = "http://192.168.1.149:3000/add-contacts/";
+const BASE_URL = "http://192.168.1.149:3000";
 
 const canOpenURL = (url) => {
   Linking.canOpenURL(url).then(supported => {
@@ -16,6 +16,10 @@ const canOpenURL = (url) => {
 };
 
 class AddNewContactView extends Component {
+  state = {
+    idScanned: 0
+  };
+
   static navigationOptions = {
     title: 'Add Contact',
     headerRight: (
@@ -23,23 +27,29 @@ class AddNewContactView extends Component {
   }
 
   handleAddContact = (newContact) => {
-    console.log('this.addIdToOfflineList(newContact._id) :', newContact._id);
-    this.addIdToOfflineList(newContact._id);
-    this.storeNewContact(newContact);
+    if ( this.state.idScanned < 2){
+      this.setState({idScanned: this.state.idScanned++ });
+      this.props.addIdToOfflineList(newContact._id);
+      // this.props.storeNewContact(newContact);
+      console.log('this.addIdToOfflineList(newContact._id) :', newContact._id);
+      console.log('Redux Store offlineContacts :', this.props.offlineContacts);
 
-    if (this.props.offlineContacts.length > 0) {
-      // Update user's `contacts` DB, retrieve updated contacts objects and store in redux state
-      updateContactsInDB(this.props.offlineContacts)
+      
+      if (this.props.offlineContacts.length > 0) {
+        // Update user's `contacts` DB, retrieve updated contacts objects and store in redux state
+        this.updateContactsInDB(this.props.offlineContacts);
+      }
     }
+
   }
 
   updateContactsInDB = (contactsIdArray) => {
     const payload = { 
-      id: this.props.me._id,
+      id: this.props.myID,
       contactsIdArray: contactsIdArray
     };
 
-    fetch(`${BASE_URL}/${this.props.me._id}`, {
+    fetch(`${BASE_URL}/user/add-contacts`, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -212,7 +222,9 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   contacts: state.contacts,
-  me: state.me,
+  me: state.myProfile,
+  myID: state.myID,
+
   offlineContacts: state.offlineContacts
 });
 

@@ -8,7 +8,7 @@ class ShareQRCode extends Component {
 
   render() {
 
-    const  QRCstring  = this.props.meJSONString;
+    const  QRCstring  = this.props.myProfileJSONString;
     console.log('QRCstring.length', QRCstring.length);
     console.log('QRCstring ', QRCstring );
     return (
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  meJSONString: state.meJSONString
+  myProfileJSONString: state.myProfileJSONString
 });
 
 const mapActionToProps = (dispatch) => ({

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Keyboard, Dimensions, TouchableOpacity, Text } from 'react-native';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
-import { storeContacts, storeMyId }  from '../redux/actions/actions';
+import { storeMyId }  from '../redux/actions/actions';
 import { TextField } from 'react-native-material-textfield';
 
 import { withNavigation } from 'react-navigation';
@@ -13,7 +13,7 @@ const { width } = Dimensions.get('window');
 // const maxDate = "2016-06-01";
 const minDate= "01 Jan 1900";
 const maxDate = "01 Jan 2001";
-const BASE_URL = "http://192.168.1.149:3000/user";
+const BASE_URL = "http://192.168.1.149:3000";
 
 class FormCreateProfileAddInfo extends Component {
   
@@ -21,15 +21,23 @@ class FormCreateProfileAddInfo extends Component {
     title: 'Add Info',
   };
 
-  //   fetch(`${BASE_URL}/${this.props.me}`, {
-  //     method: "POST",
-  //     headers: { 'Content-Type': 'application/json' }
-  //   })
-  //   .then(rawData => rawData.json())
-  //   .then( (parsedContacts) => {
-  //     this.props.storeContacts(parsedContacts);
-  //   });
-  // };
+  createMyProfileInDB = async (newProfile) => {
+    let payload = JSON.stringify(newProfile);
+
+    await fetch(`${BASE_URL}/user`, {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: payload
+    })
+      .then(rawData => rawData.text())
+      .then((myProfileID) => {
+
+        myProfileIdCleaned = myProfileID.replace(/"/g, '');
+        this.props.storeMyId(myProfileIdCleaned);
+      })
+      .catch( (err) => console.log('ERROR IN CREATING THE USER',err));
+      // this.props.navigation.navigate('Dashboard');
+  };
 
   render() {
     return (
@@ -46,7 +54,13 @@ class FormCreateProfileAddInfo extends Component {
                 Keyboard.dismiss();
                 let completedProfile = populateNewProfile( newProfileObject, company, nationality, country,  place, linkedIn, github, cv, website);
                 
-                console.log('UROS YOU ARE DONE WITH CREATING USERS FROM FORM, NOW YOU HAVE TO STORE IT IN THE REDUX STORE, IN HERE,  AND ALSO CREATE A USER ON THE SERVER... After creation on the server you need to get the entire profile from the server, especially because it has the `_id` created by MongoDB')
+                delete completedProfile._id;
+                
+                ( async () => {
+                await this.createMyProfileInDB(completedProfile);
+                console.log('COMPLETED PROFILE', completedProfile);
+                  this.props.navigation.navigate('Dashboard');
+                })();
               }
             }>
           {({ handleChange, handleSubmit, values, handleBlur }) => (
@@ -122,7 +136,7 @@ class FormCreateProfileAddInfo extends Component {
               />
 
               <TouchableOpacity 
-                onPress={handleSubmit}
+                onPress={ () => handleSubmit() }
                 title="Create Profile"
                 style={styles.button}
               >
@@ -163,12 +177,11 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  contacts: state.contacts,
-  me: state.me
+  me: state.myProfile,
+  myID: state.myID
 });
 
 const mapActionToProps = (dispatch) => ({
-  storeContacts: ((contacts) => dispatch(storeContacts(contacts))),
   storeMyId: ((id) => dispatch(storeMyId(id)))
 });
 

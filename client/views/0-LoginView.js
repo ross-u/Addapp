@@ -19,26 +19,33 @@ class LoginView extends Component {
   //  Refactor - This function need to be refactored upon implementing the 
   //  authentication.
   //  Currently it only works as a mock
-  getMyIDUponLoginAndStoreIt = () => {
-    const myID = "5c37b33210774810473a5361";
-    this.props.storeMyId(myID);
+
+   getMyIDUponLoginAndStoreIt = (username) => {
+     let myID = '';
+     if ( username === 'ross' ) myID = '5c3baa4c3a9a4827458432cb';
+
+    //  else if ( username === 'luca' ) myID = '';
+    //  else if ( username === 'gabe' ) myID = '';
+    //  else if ( username === 'gabe' ) myID = '';
+
+     this.props.storeMyId(myID);
   }
   
-  getMyProfileFromDB = () => {
-    fetch(`${BASE_URL}/${this.props.me._id}`, {
-      method: "GET",
-      headers: { 'Content-Type': 'application/json' }
-    })
-    .then(rawData => rawData.json())
-    .then( (myProfile) => {
-      this.props.storeMyProfile(myProfile[0]);
-    });
-  };
+  // getMyProfileFromDB = () => {
+  //   fetch(`${BASE_URL}/${this.props.me._id}`, {
+  //     method: "GET",
+  //     headers: { 'Content-Type': 'application/json' }
+  //   })
+  //   .then(rawData => rawData.json())
+  //   .then( (myProfile) => {
+  //     this.props.storeMyProfile(myProfile[0]);
+  //   });
+  // };
   
   // Refactor - This 2 functions should run upon successfull login after the button click
   componentDidMount () {
-    this.getMyIDUponLoginAndStoreIt();
-    this.getMyProfileFromDB(this.props.me._id);
+    this.getMyIDUponLoginAndStoreIt('ross');
+    // this.getMyProfileFromDB(this.props.me._id);
   }
   
   render() {
@@ -78,7 +85,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  me: state.me
+  me: state.myProfile
 })
 
 const mapActionToProps = (dispatch) => ({

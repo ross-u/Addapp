@@ -14,7 +14,9 @@
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
+    "koa-static-folder": "^0.1.6",
     "mongodb": "^3.1.10",
-    "mongoose": "^5.4.2"
+    "mongoose": "^5.4.2",
+    "uuid": "^3.3.2"
   }
 }

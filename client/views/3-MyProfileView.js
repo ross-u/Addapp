@@ -182,8 +182,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   contacts: state.contacts,
-  me: state.me,
-  meJSONString: state.meJSONString
+  me: state.myProfile,
+  myProfileJSONString: state.myProfileJSONString
 });
 
 const mapActionToProps = (dispatch) => ({

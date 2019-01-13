@@ -1,12 +1,33 @@
 // controller.js
 const UserModel = require('../models/UserModel');
 const ContactModel = require('../models/ContactModel');
+const fs = require('fs');
+const path = require('path');
+const uuid = require('uuid').v1;
+const rootDir = `${path.dirname(require.main.filename)}/public/profile_images/`;
 
+const saveImage = async (ctx) => {
+  const { imageBase64, name } = ctx.request.body;
+  let id = uuid();
+  id = id.substring(0,7);
+  const fileName = `${name}${id}`;
+  const fileExt = 'jpg';
+
+
+  await fs.writeFile(`${rootDir}${fileName}.${fileExt}`, imageBase64, 'base64', function (err) {
+    console.log(err);
+  });
+
+  ctx.body = `${fileName}.${fileExt}`;
+  ctx.status = 200;
+}
 // USERS COLLECTION MODEL
 
 const addUser = async (ctx) => {
   try {
-    await UserModel.addUser(ctx.request.body);
+    const result = await UserModel.addUser(ctx.request.body);
+    console.log('CREATE USER, ID TO RETUN ON SERVER : ', result._id);
+    ctx.body = result._id;
     ctx.status = 201;
   } catch (err) {
     ctx.status = 500;
@@ -36,6 +57,7 @@ const updateUser = async (ctx) => {
 
 
 const addContacts = async (ctx) => {
+  console.log('IN addContacts');
   const { id, contactsIdArray } = ctx.request.body;
   try {
     await UserModel.addContacts(id, contactsIdArray);
@@ -132,6 +154,8 @@ const deleteContact = async (ctx) => {
 
 
 module.exports = {
+  saveImage,
+
   addUser,
   getAllUsers,
   updateUser,

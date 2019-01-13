@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const app = new Koa();
 const bodyParser = require('koa-bodyparser');
-const static = require('koa-static');
+const serve = require('koa-static');
 const router = require('./router');
 const mongoose = require('./db');
 
@@ -13,13 +13,14 @@ const { PORT, URI } = require('./config');
 // P E N D I N G
 
 // Middleware
+app.use(serve('./public/profile_images/'));
 app.use(bodyParser());
 app.use(router.routes());
 
 (async () => {
   try {
     // Instantiate a Mongoose connection to the database, stored in `db.js`
-    mongoose.connect( URI, (err) => {
+    mongoose.connect( URI, { useNewUrlParser: true }, (err) => {
       if (err) return console.log(err);
       console.log(`Connected to the database.`);
     });

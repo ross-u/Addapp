@@ -17,9 +17,9 @@ class Dashboard extends Component {
       <HeadersActions></HeadersActions>),
   };
 
-  getMyContacts = () => {
-    console.log('Dashboard - fetch');
-    fetch(`${BASE_URL}/${this.props.me._id}`, {
+  getMyContacts = async () => {
+    console.log('Dashboard - fetch,  this.props.myID',  this.props.myID);
+    await fetch(`${BASE_URL}/${this.props.myID}`, {
       method: "GET",
       headers: { 'Content-Type': 'application/json' }
     })
@@ -29,7 +29,8 @@ class Dashboard extends Component {
       let myProfile = contacts.splice(contacts.length -1, 1)
       this.props.storeMyProfile(myProfile[0]);
       this.props.storeContacts(contacts);
-    });
+    })
+    .catch( (err) => console.log('getMyContactsError',err))
   };
   
   componentDidMount () {
@@ -92,7 +93,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   contacts: state.contacts,
-  me: state.me
+  me: state.myProfile,
+  myID: state.myID
 });
 
 const mapActionToProps = (dispatch) => ({

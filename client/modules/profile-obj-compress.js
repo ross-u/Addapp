@@ -10,7 +10,7 @@ export const compressProfile = (myProfile) => {
 };
 
 let emptyProfile = {
-  "_id": "",
+  "_id": null,
   "contacts": [],
   "networking": {
     "cv": "",
@@ -19,7 +19,7 @@ let emptyProfile = {
     "website": "",
   },
   "personal": {
-    "age": 1234,
+    "age": 99,
     "birthday": "",
     "birthplace": {
       "country": "",
@@ -79,6 +79,5 @@ export const populateNewProfile = (newProfileObject, company, nationality, count
   
   const newProfileCompleted = Object.assign(newProfileObject, {personal, networking});
 
-  console.log('COMPLETED PROFILE:', newProfileCompleted);
   return newProfileCompleted;
 }

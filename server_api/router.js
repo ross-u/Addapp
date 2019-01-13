@@ -4,18 +4,18 @@ const fs = require('fs');
 const controller = require('./controllers/controller');
 
 router.post('/user', controller.addUser);
+
+
 router.get('/user', controller.getAllUsers);
 router.get('/user/all', controller.getAllUsers);
-router.put('/user/add-contacts', controller.addContacts);
+router.post('/user/add-contacts', controller.addContacts);
 router.delete('/user/delete/:id', controller.deleteUser);
-
-
 
 router.put("/user/:id", controller.updateUser);
 router.get('/me/:id', controller.getMyProfile);
-
 router.get('/user-friends/:id', controller.getUsersFriends);
 
+router.post('/image/save', controller.saveImage);
 
 router.post('/contact', controller.addContact);
 router.get('/contact', controller.getAllContacts);

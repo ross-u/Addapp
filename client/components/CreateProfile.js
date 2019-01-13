@@ -4,8 +4,10 @@ import { Avatar } from 'react-native-elements';
 import { Formik } from 'formik';
 import DatePicker from 'react-native-datepicker';
 import { connect } from 'react-redux';
-import { storeContacts, storeMyId }  from '../redux/actions/actions';
+import { storeContacts }  from '../redux/actions/actions';
 import { TextField } from 'react-native-material-textfield';
+import { ImagePicker } from 'expo';
+
 
 import { withNavigation } from 'react-navigation';
 import { createNewProfile } from './../modules/profile-obj-compress';
@@ -15,17 +17,17 @@ const { width } = Dimensions.get('window');
 // const maxDate = "2016-06-01";
 const minDate= "01 Jan 1900";
 const maxDate = "01 Jan 2001";
-const BASE_URL = "http://192.168.1.149:3000/user";
+const BASE_URL = "http://192.168.1.149:3000";
 
 class FormCreateProfile extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
+  state = {
       date:'01 Jan 2000',
       datePlaceholder: "ENTER AGE",
-      userPhoto: 'http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/add-icon.png'
+      image: 'http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/add-icon.png',
+      uploadedImageURI: 'x',
+      name: '',
+      base64: ''
     }
-  };
   
   static navigationOptions = {
     title: 'Create profile',
@@ -41,23 +43,68 @@ class FormCreateProfile extends Component {
   //   });
   // };
 
+  postImage = async (base64Payload, name) => {
+    let payload = JSON.stringify({
+      name: name,
+      imageBase64: base64Payload
+     });
+
+     console.log('postImage');
+
+    await fetch(`${BASE_URL}/image/save`, {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: payload
+    })
+    // .then(rawData => rawData.json())
+    .then(rawData => rawData.text())
+    .then( (imageName) =>  {
+      const uploadedImageURI = `${BASE_URL}/${imageName}`;
+
+      this.setState({uploadedImageURI: uploadedImageURI});
+    })
+    .catch( (err) => console.log('Image POST error :', err));
+
+  };
+
+  _pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+      base64: true
+    });
+
+
+    // console.log(result);
+    
+    if (!result.cancelled) {
+      // this.setState({ image: result.uri });
+      this.setState({ image: result.uri, base64: result.base64 });
+      // console.log(converted);
+    }
+  };
+  
   render() {
+    const { image } = this.state;
     return (
       <View style={styles.container}>
 
-      <Formik 
-            initialValues={{ fName: '', lName: '',  occupation: '', email: '', date: '' }} 
+        <Formik
+          initialValues={{ fName: '', lName: '', email: '', occupation: '', date: '' }}
 
-            onSubmit={values => {
-                const { userPhoto } = this.state;
-                Keyboard.dismiss();
-                let newProfile = createNewProfile(userPhoto ,values.fName, values.lName, values.email, values.occupation, values.date );
+          onSubmit={ async ({fName, lName, email, occupation, date}) => {
+            
+            Keyboard.dismiss();
+            await this.postImage(this.state.base64, fName);
+            const { uploadedImageURI } = this.state;
 
-                this.props.navigation.navigate('CreateProfileAddInfo', {
-                  newProfile : newProfile
-                });
-              }
-            }>
+            let newProfile = createNewProfile(uploadedImageURI, fName, lName, email, occupation, date);
+
+            this.props.navigation.navigate('CreateProfileAddInfo', {
+              newProfile: newProfile
+            });
+          }
+          }>
           {({ handleChange, handleSubmit, values }) => (
 
 
@@ -66,14 +113,17 @@ class FormCreateProfile extends Component {
               showsVerticalScrollIndicator={false}
               >
 
-              <Text style={{ fontSize: 12, marginBottom: 5 }}>Photo</Text>
-              <Avatar
-                large
-                rounded
-                activeOpacity={0.7} 
-                source={{ uri: this.state.userPhoto }}
-                onPress={() => console.log("Add Photo Pressed!")} 
-              />
+              <Text style={{ fontSize: 12, marginBottom: 30 }}>Photo</Text>
+              <View style={{ flex: 1, justifyContent: 'center' }}>
+                {image &&
+                  <Avatar
+                    onPress={this._pickImage}
+                    source={{ uri: image }}
+                    large
+                    avatarStyle={{ width: 110, height: 110, marginBottom: 20 }}
+                    rounded
+                  />}
+              </View>
 
               <TextField
                 style={styles.formField}
@@ -177,12 +227,11 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   contacts: state.contacts,
-  me: state.me
+  me: state.myProfile
 });
 
 const mapActionToProps = (dispatch) => ({
   storeContacts: ((contacts) => dispatch(storeContacts(contacts))),
-  storeMyId: ((id) => dispatch(storeMyId(id)))
 });
 
 const FormCreateProfileWithNav = withNavigation(FormCreateProfile);
