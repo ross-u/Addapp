@@ -16,9 +16,6 @@ const canOpenURL = (url) => {
 };
 
 class AddNewContactView extends Component {
-  state = {
-    idScanned: 0
-  };
 
   static navigationOptions = {
     title: 'Add Contact',
@@ -26,20 +23,18 @@ class AddNewContactView extends Component {
       <HeadersActions></HeadersActions>),
   }
 
-  handleAddContact = (newContact) => {
-    if ( this.state.idScanned < 2){
-      this.setState({idScanned: this.state.idScanned++ });
-      this.props.addIdToOfflineList(newContact._id);
+  handleAddContact = async (newContact) => {
+      await this.props.addIdToOfflineList(newContact._id);
       // this.props.storeNewContact(newContact);
-      console.log('this.addIdToOfflineList(newContact._id) :', newContact._id);
-      console.log('Redux Store offlineContacts :', this.props.offlineContacts);
+      console.log('newContact._id :', newContact._id);
+      console.log('In Redux : offlineContacts :', this.props.offlineContacts);
 
       
       if (this.props.offlineContacts.length > 0) {
+        console.log('ENTER');
         // Update user's `contacts` DB, retrieve updated contacts objects and store in redux state
         this.updateContactsInDB(this.props.offlineContacts);
       }
-    }
 
   }
 
@@ -61,7 +56,8 @@ class AddNewContactView extends Component {
       this.props.storeMyProfile(myProfile[0]);
       this.props.storeContacts(updatedContacts);
       this.props.resetOfflineList();
-    });
+    })
+    .then(() => this.props.navigation.navigate('Dashboard'))
   }
 
 
