@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
-const emptyProfile = {}
+const myemptyProfile = {}
+
 
 const contacts = (state = [], action) => {
   switch (action.type) {
@@ -44,13 +45,20 @@ const myID = (state = '', action) => {
   }
 };
 
-const myProfile = (state = emptyProfile, action) => {
+const myProfile = (state = {}, action) => {
   switch (action.type) {
-    // case 'STORE_MY_ID':
-    //   return action.id;
-
     case 'STORE_MY_PROFILE':
       return Object.assign({}, action.myProfile);
+
+    default:
+      return state;
+  }
+};
+
+const friendsProfileInView = (state = {}, action) => {
+  switch (action.type) {
+    case 'STORE_FRIENDS_PROFILE':
+      return Object.assign({}, action.profile);
 
     default:
       return state;
@@ -67,12 +75,25 @@ const myProfileJSONString = (state = '', action) => {
   }
 };
 
+const friendsProfileInViewJSONString = (state = '', action) => {
+  switch (action.type) {
+    case 'STORE_FRIENDS_PROFILE_AS_JSON_STRING':
+      return action.JSONString;
+
+    default:
+      return state;
+  }
+};
+
+
 const reducers = combineReducers({
   contacts,
   myID,
   myProfile,
+  friendsProfileInView,
   offlineContacts,
-  myProfileJSONString
+  myProfileJSONString,
+  friendsProfileInViewJSONString
 });
 
 export default reducers;

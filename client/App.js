@@ -19,6 +19,7 @@ import ShowContactProfile from './views/7-ShowContactProfileView';
 import FindView from './views/FindView';
 import ContactTab from './components/ContactTab';
 import CreateProfileAddInfoView from './views/2-CreateProfileAddInfoView';
+import ShareFriendsQRCodeView from './views/4-ShareFriendsQRCodeView';
 
 const store = createStore(
   reducers,
@@ -37,6 +38,7 @@ const RootStack = createStackNavigator(
     Dashboard: Dashboard, // Dashboard: { screen : Dashboard }
     MyProfile: MyProfile,
     ShareQRCode: ShareQRCodeView,
+    ShareFriendsQRCodeView: ShareFriendsQRCodeView,
     AddContactScanQRCView: AddContactScanQRCView,
     AddNewContact: AddNewContactView,
     ShowContactProfile: ShowContactProfile, 

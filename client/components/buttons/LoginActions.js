@@ -3,8 +3,8 @@ import { View, StyleSheet, Dimensions, Keyboard, TouchableOpacity, Text, TextInp
 import { withNavigation } from 'react-navigation';
 
 import { Formik } from 'formik';
-import { accentColor } from './../../utils/style';
-import { shrinkLogo } from '../../redux/actions/actions';
+import { accentColor, accentColorShadow } from './../../utils/style';
+
 
 const { width } = Dimensions.get('window');
 
@@ -167,9 +167,15 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.2)',
     alignItems: 'center',
     justifyContent: 'center',
-    // width: 210,
-    // height: 60,
     borderRadius: 30,
+
+    borderBottomColor: accentColorShadow,
+    borderLeftColor: accentColorShadow,
+    borderRightColor: accentColorShadow,
+    borderBottomWidth: 4,
+    borderLeftWidth: 0.3,
+    borderRightWidth: 0.3,
+    
   },
   buttonText: {
     fontSize: 24

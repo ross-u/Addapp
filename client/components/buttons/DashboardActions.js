@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation';
 
 import { connect } from 'react-redux';
 import { storeContacts }  from './../../redux/actions/actions';
-import { accentColor, backgroundColor } from '../../utils/style';
+import { accentColor, backgroundColor, accentColorShadow } from '../../utils/style';
 
 class DashboardActions extends Component {
   state = {
@@ -42,6 +42,9 @@ class DashboardActions extends Component {
 
           <TouchableOpacity
             style={styles.buttonRound}
+            onPress={ () => this.props.navigation.navigate('MyProfile', {
+              contacts: this.props.contacts
+            })}
           >
             <Icon 
               type='font-awesome'
@@ -83,10 +86,17 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.2)',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 210,
+    width: 205,
     height: 60,
     backgroundColor: accentColor,
     borderRadius: 30,
+
+    borderBottomColor: accentColorShadow,
+    borderLeftColor: accentColorShadow,
+    borderRightColor: accentColorShadow,
+    borderBottomWidth: 4,
+    borderLeftWidth: 0.2,
+    borderRightWidth: 0.2,
   },
   buttonRound :{
     borderWidth: 1,
@@ -97,6 +107,13 @@ const styles = StyleSheet.create({
     height: 65,
     backgroundColor: accentColor,
     borderRadius: 65,
+
+    borderBottomColor: accentColorShadow,
+    borderLeftColor: accentColorShadow,
+    borderRightColor: accentColorShadow,
+    borderBottomWidth: 4,
+    borderLeftWidth: 0.2,
+    borderRightWidth: 0.2,
   }
 })
 

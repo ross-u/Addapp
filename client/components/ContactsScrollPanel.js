@@ -16,7 +16,7 @@ class ContactsScrollPanel extends Component {
     return (
     <View style={styles.container}>
       {contacts.length > 0
-        ? (<ScrollView style={styles.scrollView} contentContainerStyle={{justifyContent: 'center', alignItems: 'center', width: width - 50}}>
+        ? (<ScrollView contentContainerStyle={styles.scrollView}>
             {contacts.map( (c) => (<ContactTab contact={c} key={c._id} /> ))}
           </ScrollView>) 
 
@@ -32,11 +32,13 @@ class ContactsScrollPanel extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: width - 50,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   scrollView: {
-    width: width - 50,
+    width: width,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   spinnerContainer: {
     flex: 1,

@@ -1,9 +1,9 @@
-export const compressProfile = (myProfile) => {
+export const compressProfile = (profile) => {
 
-  const {_id, photo} = myProfile;
-  const { age, fName, lName, occupation } = myProfile.personal;
-  const { country, place } = myProfile.personal.currentLocation;
-  const { cv, github, linkedIn, website } = myProfile.networking;
+  const {_id, photo} = profile;
+  const { age, fName, lName, occupation } = profile.personal;
+  const { country, place } = profile.personal.currentLocation;
+  const { cv, github, linkedIn, website } = profile.networking;
 
   const compressed = { _id, cv, github, linkedIn, website, age, country, place, fName, lName, occupation, photo};
   return compressed;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, View, StyleSheet, Text, Alert } from 'react-native';
+import { Dimensions, View, StyleSheet, Text, Alert, Image } from 'react-native';
 import { Button, Avatar, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import { BarCodeScanner, Permissions, Constants, Camera } from 'expo';
 import { withNavigation } from 'react-navigation';
@@ -50,11 +50,19 @@ class BarcodeScanner extends React.Component {
             this.state.hasCameraPermission === false ?
               <Text>Camera permission is not granted</Text> :
               <BarCodeScanner
-            
-                barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-                onBarCodeRead={this._handleBarCodeRead}
-                style={{ height: 200, width: width }}
-              />
+        onBarCodeRead={this.handleBarCodeScanned}
+        style={[StyleSheet.absoluteFill, styles.container]}>
+        <Text style={styles.description}>Scan your QR code</Text>
+        <Image
+          style={styles.qr}
+          source={require('./../assets/icon.png')}
+        />
+        <Text
+          onPress={() => console.log('Pressed')}
+          style={styles.cancel}>
+          Cancel
+        </Text>
+      </BarCodeScanner>
           }
         </View>
 

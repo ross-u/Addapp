@@ -46,7 +46,7 @@ class Dashboard extends Component {
       setTimeout( () => {
         this.setState({noContactsToShow: true});
         console.log('getMyContactsError',err);
-      }, 500);
+      }, 1500);
     } 
     );
   };
@@ -96,8 +96,12 @@ const styles = StyleSheet.create({
   scrollWrapper: {
     flex: 1,
     paddingTop: 10,
-    height: 200,
-    alignItems: 'center'
+    // height: 200,
+    alignItems: 'center',
+    // borderBottomColor: 'rgb(80, 79, 79)',
+    // borderBottomColor: headerColor,
+    // borderBottomWidth: 2,
+
   },
   noContactsMessageWrapper: {
     flex: 1,
@@ -108,6 +112,11 @@ const styles = StyleSheet.create({
   },
   actionsWrapper: {
     height: 120,
+
+    borderColor: '#252427',
+    borderTopWidth: 3,
+    borderRadius: 2,
+    shadowColor: headerColor,
   }
 });
 

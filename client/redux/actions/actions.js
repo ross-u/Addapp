@@ -26,8 +26,16 @@ export const storeMyProfile = (myProfile) => (
   { type: 'STORE_MY_PROFILE', myProfile }
 );
 
+export const storeFriendsProfileInView = (profile) => (
+  { type: 'STORE_FRIENDS_PROFILE', profile }
+);
+
 export const storeMyProfileJSONString = (JSONString) => (
   { type: 'STORE_MY_PROFILE_AS_JSON_STRING', JSONString }
+);
+
+export const storeFriendsProfileJSONString = (JSONString) => (
+  { type: 'STORE_FRIENDS_PROFILE_AS_JSON_STRING', JSONString }
 );
 
 export const shrinkLogo = (myProfile) => (
