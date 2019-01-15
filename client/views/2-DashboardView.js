@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Button, Text } from 'react-native';
+import { View, StyleSheet, Text, Image } from 'react-native';
+import {  Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { storeContacts, storeMyId, storeMyProfile }  from '../redux/actions/actions';
 
@@ -7,7 +8,7 @@ import HeadersActions from './../components/HeadersActions';
 import ContactsScrollPanel from './../components/ContactsScrollPanel';
 import DashboardActions from './../components/buttons/DashboardActions';
 
-import { backgroundColor, headerColor } from '../utils/style';
+import { backgroundColor, headerColor, accentColor } from '../utils/style';
 
 const BASE_URL = "http://192.168.1.149:3000/user-friends";
 
@@ -45,8 +46,8 @@ class Dashboard extends Component {
     .catch( (err) => {
       setTimeout( () => {
         this.setState({noContactsToShow: true});
-        console.log('getMyContactsError',err);
-      }, 1500);
+        console.log('getMyContactsError', err);
+      }, 200);
     } 
     );
   };
@@ -63,13 +64,16 @@ class Dashboard extends Component {
 
      return <View style={styles.container}>
          {this.state.noContactsToShow ? <View style={styles.container}>
-             <View style={styles.noContactsMessageWrapper}>
-               <View style={{ paddingBottom: 149, alignItems: 'center' }}>
-                 <Text style={{ paddingBottom: 10}}>
-                   NO CONTACTS TO SHOW
+         <View style={styles.noContactsMessageWrapper}>
+           <View style={{ paddingBottom: 149, alignItems: 'center' }}>
+
+             <Image source={ require('./../assets/addapp_logo_square_transparent.png')} style={{ width: 150, height: 150 }} ></Image>
+
+             <Text style={{ paddingBottom: 10, color: accentColor, fontWeight: '600' }}>
+               NO CONTACTS TO SHOW
                  </Text>
-                 <Text>Add contacts</Text>
-               </View>
+             <Text style={{ color: accentColor, textDecorationLine: 'underline' }}>Add contacts</Text>
+           </View>
 
                <View style={styles.actionsWrapper}>
                  <DashboardActions />
@@ -106,7 +110,7 @@ const styles = StyleSheet.create({
   noContactsMessageWrapper: {
     flex: 1,
     height: 400,
-    paddingTop: 240,
+    paddingTop: 120,
     justifyContent: 'center',
     alignContent: 'center',
   },

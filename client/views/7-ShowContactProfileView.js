@@ -71,15 +71,13 @@ class ContactProfileView extends Component {
           </Text>
           <Text style={styles.miniInfo}>from <Text style={styles.category}>{` ${birthplace.country}`} </Text> </Text>
 
-          <TouchableOpacity
-            style={styles.yellowButtonRound}
-          >
+          <TouchableOpacity style={styles.yellowButtonRound}>
             <Icon git status
               type='entypo'
               name='link'
               size={36}
               color="black"
-              onPress={() => this.props.navigation.navigate('ShareFriendsQRCodeView')}
+              onPress={() => this.props.navigation.navigate('ShareFriendsQRCodeView',  { contact: contact })}
             />
           </TouchableOpacity>
           
@@ -100,7 +98,7 @@ class ContactProfileView extends Component {
               color='#00aced'
               size={28}
               raised={true}
-              onPress={() => thiscanOpenURL(github)}
+              onPress={() => canOpenURL(github)}
             />
 
             <Icon iconStyle={styles.icons}
@@ -111,7 +109,7 @@ class ContactProfileView extends Component {
               color='#517fa4'
               size={28}
               raised={true}
-              onPress={() => thiscanOpenURL(cv)}
+              onPress={() => canOpenURL(cv)}
             />
 
             <Icon iconStyle={styles.icons}
@@ -121,7 +119,7 @@ class ContactProfileView extends Component {
               color='#0984e3'
               size={28}
               raised={true}
-              onPress={() => thiscanOpenURL(email)}
+              onPress={() => canOpenURL(email)}
             />
 
             <Icon
@@ -132,7 +130,7 @@ class ContactProfileView extends Component {
               name='facebook'
               size={28}
               raised={true}
-              onPress={() => thiscanOpenURL(facebook)}
+              onPress={() => canOpenURL(facebook)}
             />
 
             <Icon iconStyle={styles.icons}
@@ -142,7 +140,7 @@ class ContactProfileView extends Component {
               color='#00aced'
               size={28}
               raised={true}
-              onPress={() => thiscanOpenURL(instagram)}
+              onPress={() => canOpenURL(instagram)}
             />
 
             <Icon iconStyle={styles.icons}
@@ -152,7 +150,7 @@ class ContactProfileView extends Component {
               color='#517fa4'
               size={28}
               raised={true}
-              onPress={() => thiscanOpenURL(twitter)}
+              onPress={() => canOpenURL(twitter)}
             />
 
             <Icon iconStyle={styles.icons}
@@ -162,7 +160,7 @@ class ContactProfileView extends Component {
               color='#517fa4'
               size={28}
               raised={true}
-              onPress={() => thiscanOpenURL(blog)}
+              onPress={() => canOpenURL(blog)}
             />
 
           </ScrollView>

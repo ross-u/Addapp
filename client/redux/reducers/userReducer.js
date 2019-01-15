@@ -77,6 +77,7 @@ const myProfileJSONString = (state = '', action) => {
 
 const friendsProfileInViewJSONString = (state = '', action) => {
   switch (action.type) {
+    
     case 'STORE_FRIENDS_PROFILE_AS_JSON_STRING':
       return action.JSONString;
 

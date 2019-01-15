@@ -46,9 +46,10 @@ const RootStack = createStackNavigator(
     FindView: FindView,
   },
   { // Options object - specifies what is the initial route in a stack
-    initialRouteName: 'LoginView',
+    // initialRouteName: 'LoginView',
     // initialRouteName: 'CreateProfile',
-    // initialRouteName: 'Dashboard',  
+    // initialRouteName: 'Dashboard',
+    initialRouteName: 'FindView',
     // initialRouteName: 'ProfileView',
     // initialRouteName: 'AddContactScanQRCView',  
   }

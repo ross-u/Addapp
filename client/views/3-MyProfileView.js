@@ -71,7 +71,7 @@ class MyProfileView extends Component {
               name='share-alt'
               size={36}
               color="black"
-              onPress={() => this.props.navigation.navigate('ShareQRCode')}
+              onPress={() => this.props.navigation.navigate('ShareQRCode', { myProfile: myProfile })}
             />
           </TouchableOpacity>
 

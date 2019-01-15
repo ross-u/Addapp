@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Dimensions, Keyboard, TouchableOpacity, Text, TextInput, Image } from 'react-native';
+import { View, StyleSheet, Dimensions, Keyboard, TouchableOpacity, Text, TextInput } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import { Formik } from 'formik';
@@ -15,7 +15,7 @@ class LoginActions extends Component {
     borderSize: 0.5,
     inputFontSizeU: 16,
     inputFontSizeD: 16,
-    marginBottomD: 150,
+    marginBottomD: 120,
     logoResized: false
   }
 
@@ -45,7 +45,7 @@ class LoginActions extends Component {
         inputFontSizeU: 20,
         inputFontSizeD: 16,
         borderColorU: accentColor,
-        marginBottomD: 16,
+        marginBottomD: 10,
         // logoResized: true
       });
       // if (!this.state.logoResized) shrinkLogo();
@@ -55,7 +55,7 @@ class LoginActions extends Component {
         inputFontSizeD: 20,
         inputFontSizeU: 16,
         borderColorD: accentColor,
-        marginBottomD: 16,
+        marginBottomD: 10,
         // logoResized: true
       });
       // if (!this.state.logoResized) shrinkLogo();
@@ -162,25 +162,23 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: accentColor,
     color: 'black',
-
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.2)',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 30,
-
     borderBottomColor: accentColorShadow,
     borderLeftColor: accentColorShadow,
     borderRightColor: accentColorShadow,
     borderBottomWidth: 4,
     borderLeftWidth: 0.3,
     borderRightWidth: 0.3,
-    
   },
   buttonText: {
     fontSize: 24
   },
   wrapper: {
+    marginTop: 20,
     alignContent: 'center',
     width: width - 160
   },

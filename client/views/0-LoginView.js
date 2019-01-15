@@ -75,7 +75,7 @@ class LoginView extends Component {
             source={require('../assets/addapp_text_logo_night.png')}
           />
         </View>
-        <View style={styles.sectionWrapper}>
+        <View style={styles.buttonsWrapper}>
             <LoginActions 
               shrinkLogo={this.shrinkLogo}
               resetLogo={this.resetLogo}
@@ -97,7 +97,13 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   sectionWrapper: {
+    flex: 1,
     alignContent: 'center',
+  },
+  buttonsWrapper: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   logo: {
     marginBottom: 5,
@@ -105,7 +111,7 @@ const styles = StyleSheet.create({
   },
   logoText: {
     alignSelf: 'center',
-    marginBottom: 30,
+    marginBottom: 40,
   }
 });
 
