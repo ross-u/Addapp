@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Button, Avatar } from 'react-native-elements';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Button, Avatar, Icon } from 'react-native-elements';
 import { withNavigation } from 'react-navigation';
 
 import { connect } from 'react-redux';
 import { storeContacts }  from './../../redux/actions/actions';
+import { accentColor, backgroundColor } from '../../utils/style';
 
 class DashboardActions extends Component {
   state = {
@@ -18,8 +19,18 @@ class DashboardActions extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.buttonWrapper}>
-          <Avatar
+
+        <View style={styles.buttonLeftWrapper}>
+          <Button
+            onPress={ () => this.props.navigation.navigate('AddContactScanQRCView')}
+            buttonStyle={styles.button}
+            icon={{ name: 'person-add', size: 34, color: "black" }}
+          />
+        </View>
+
+        <View style={styles.buttonRightWrapper}>
+          {/* <Button
+            buttonStyle={styles.buttonRound}
             onPress={ () => this.props.navigation.navigate('MyProfile', {
               contacts: this.props.contacts
             })}
@@ -27,21 +38,21 @@ class DashboardActions extends Component {
             rounded
             raised
             icon={{ name: 'share', size: 36 }}
-            />
+            /> */}
+
+          <TouchableOpacity
+            style={styles.buttonRound}
+          >
+            <Icon 
+              type='font-awesome'
+              name='share-alt'
+              size={36}
+              color="black"
+           />
+          </TouchableOpacity>
         </View>
 
-        
-
-        <View style={styles.buttonWrapper}>
-          <Button
-            onPress={ () => this.props.navigation.navigate('AddContactScanQRCView')}
-            buttonStyle={styles.button}
-            raised
-            icon={{ name: 'person-add', size: 30 }}
-          />
-        </View>
       </View>
-
       
     )
   }
@@ -50,19 +61,42 @@ class DashboardActions extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     alignItems: 'center'
   },
-  buttonWrapper: {
+  buttonLeftWrapper: {
+    flex: 4,
+    paddingRight: 0,
+    paddingLeft: 30,
     alignItems: 'center',
     marginBottom: 10
   },
+  buttonRightWrapper: {
+    flex: 2,
+    paddingRight: 20,
+    alignItems: 'center',
+    marginBottom: 10,
+    backgroundColor: backgroundColor
+  },
   button :{
-    width: 225,
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 210,
+    height: 60,
+    backgroundColor: accentColor,
+    borderRadius: 30,
   },
   buttonRound :{
-    width: 100,
-    height: 100,
-    borderRadius: 100
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 65,
+    height: 65,
+    backgroundColor: accentColor,
+    borderRadius: 65,
   }
 })
 

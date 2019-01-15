@@ -6,7 +6,7 @@ import { storeMyId }  from '../redux/actions/actions';
 import { TextField } from 'react-native-material-textfield';
 
 import { withNavigation } from 'react-navigation';
-import { populateNewProfile } from '../modules/profile-obj-compress';
+import { populateNewProfile } from '../utils/profile-obj-compress';
 
 const { width } = Dimensions.get('window');
 // const minDate= "1900-05-01";

@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Dimensions, Keyboard } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, Keyboard } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
 
 import LoginActions from './../components/buttons/LoginActions';
 import { connect } from 'react-redux';
 import { storeMyProfile, storeMyId }  from '../redux/actions/actions';
-import { Formik } from 'formik';
-import { TextField } from 'react-native-material-textfield';
+import { backgroundColor } from '../utils/style';
 
 const BASE_URL = "http://192.168.1.149:3000/me";
-const { width } = Dimensions.get('window');
 
 class LoginView extends Component {
+  state = {
+    logoHeight: 140,
+    logoWidth: 140,
+    logoTextHeight: 27,
+    logoTextWidth: 90,
+  }
   static navigationOptions = {
-    title: 'appname.',
+    header: null
   };
 
   //  Refactor - This function need to be refactored upon implementing the 
@@ -23,11 +27,8 @@ class LoginView extends Component {
    getMyIDUponLoginAndStoreIt = (username) => {
      let myID = '';
      if ( username === 'ross' ) myID = '5c3baa4c3a9a4827458432cb';
-
     //  else if ( username === 'luca' ) myID = '';
     //  else if ( username === 'gabe' ) myID = '';
-    //  else if ( username === 'gabe' ) myID = '';
-
      this.props.storeMyId(myID);
   }
   
@@ -41,6 +42,15 @@ class LoginView extends Component {
   //     this.props.storeMyProfile(myProfile[0]);
   //   });
   // };
+
+  shrinkLogo = () => {
+    this.setState({ logoHeight:100, logoWidth:100, logoTextHeight:20,logoTextWidth: 63 })
+  }
+
+  resetLogo = () => {
+    this.setState({
+      logoHeight: 140, logoWidth: 140, logoTextHeight: 27, logoTextWidth: 90 })
+  }
   
   // Refactor - This 2 functions should run upon successfull login after the button click
   componentDidMount () {
@@ -49,20 +59,28 @@ class LoginView extends Component {
   }
   
   render() {
-    const { contacts } = this.props;
+    const { logoHeight, logoWidth, logoTextHeight, logoTextWidth } = this.state;
+
 
     return (
       <View style={styles.container}>
-        <Text style={styles.logoLarge}> {'appname.'} </Text>
-              <Avatar
-                large
-                rounded
-                activeOpacity={0.7} 
-                source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/1024px-Circle_Davys-Grey_Solid.svg.png" }}
-                onPress={() => console.log("Works!")} 
-              />
-        
-          <LoginActions></LoginActions>
+        <View style={styles.sectionWrapper}>
+          <Image
+            style={[styles.logo, {height: logoHeight, width: logoWidth}]}
+            source={require('../assets/addapp_logo_round_night_new.png')}
+            onPress={() => Keyboard.dismiss()}
+          />
+          <Image
+            style={[styles.logoText, { height: logoTextHeight, width: logoTextWidth,}]}
+            source={require('../assets/addapp_text_logo_night.png')}
+          />
+        </View>
+        <View style={styles.sectionWrapper}>
+            <LoginActions 
+              shrinkLogo={this.shrinkLogo}
+              resetLogo={this.resetLogo}
+            />
+        </View>
       </View>
     )
   }
@@ -72,15 +90,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    padding: 20,
+    backgroundColor: backgroundColor
   },
   logoLarge: {
-    fontSize: 40
+    fontSize: 30
   },
-  wrapper: {
+  sectionWrapper: {
     alignContent: 'center',
-    width: width - 100
   },
-  formField: {
+  logo: {
+    marginBottom: 5,
+    marginTop: 30,
+  },
+  logoText: {
+    alignSelf: 'center',
+    marginBottom: 30,
   }
 });
 

@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Linking } from 'react-native';
+import { View, StyleSheet, Text, Linking, ScrollView, TouchableOpacity } from 'react-native';
 import { Avatar, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { storeContacts, storeMyId, storeMyProfileJSONString }  from '../redux/actions/actions';
-import { compressProfile } from './../modules/profile-obj-compress';
+import { compressProfile } from './../utils/profile-obj-compress';
+import { backgroundColor, headerColor, accentColor } from '../utils/style';
 
 import HeadersActions from './../components/HeadersActions';
 
 class MyProfileView extends Component {
   static navigationOptions = {
-    title: 'Profile View',
+    headerBackgroundTransitionPreset: 'toggle',
+    title: 'My Profile',
     headerRight: (
       <HeadersActions></HeadersActions>),
+    headerStyle: { backgroundColor: headerColor },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
   };
 
   canOpenURL = (url) => {
@@ -55,17 +62,20 @@ class MyProfileView extends Component {
           </Text>
           <Text style={styles.category}>from {`${birthplace.country}`} </Text>
 
-          <Icon
-            style={{ position: 'absoulute', top: '100'}}
-            type='font-awesome'
-            name='share-alt'
-            size={22}
-            raised={true}
-            onPress={ () => this.props.navigation.navigate('ShareQRCode')}
-          />
+          <TouchableOpacity
+            style={styles.buttonRound}
+          >
+            <Icon 
+              type='font-awesome'
+              name='share-alt' 
+              size={36} 
+              color="black"
+              onPress={() => this.props.navigation.navigate('ShareQRCode')}
+            />
+          </TouchableOpacity>
 
         </View>
-        <Text style={styles.category}> Social </Text>
+        {/* <Text style={styles.category}> Social </Text>
         <View style={styles.iconsContainer}>
           <Icon
             type='entypo'
@@ -101,10 +111,11 @@ class MyProfileView extends Component {
             raised={true}
             onPress={() => this.canOpenURL(blog)}
           />
-        </View>
+        </View> */}
 
         <Text style={styles.category}> Networking </Text>
-        <View style={styles.iconsContainer}>
+
+        <ScrollView horizontal contentContainerstyle={styles.iconsContainer}>
           <Icon
             type='entypo'
             name='linkedin'
@@ -138,7 +149,43 @@ class MyProfileView extends Component {
             raised={true}
             onPress={() => this.canOpenURL(email)}
           />
-        </View>
+
+          <Icon
+            type='entypo'
+            name='facebook'
+            size={28}
+            raised={true}
+            onPress={() => this.canOpenURL(facebook)}
+          />
+
+          <Icon style={styles.icons}
+            type='font-awesome'
+            name='instagram'
+            color='#00aced'
+            size={28}
+            raised={true}
+            onPress={() => this.canOpenURL(instagram)}
+          />
+
+          <Icon style={styles.icons}
+            type='font-awesome'
+            name='twitter'
+            color='#517fa4'
+            size={28}
+            raised={true}
+            onPress={() => this.canOpenURL(twitter)}
+          />
+
+          <Icon style={styles.icons}
+            type='font-awesome'
+            name='meetup'
+            color='#517fa4'
+            size={28}
+            raised={true}
+            onPress={() => this.canOpenURL(blog)}
+          />
+          
+        </ScrollView>
       </View>
     )
   }
@@ -147,34 +194,55 @@ class MyProfileView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
+    backgroundColor: backgroundColor
   },
   contactsWrapper: {
-    flex: 1,
+    flex: 4,
     padding: 10,
     alignItems: 'center'
   },
   iconsContainer: {
+    left: -20,
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
   name: {
-    fontSize: 30
+    fontSize: 30,
+    color: 'white'
   },
   jobtitle: {
     fontSize: 20,
-    marginBottom: 10
+    marginBottom: 10,
+    color: 'white'
   },
   details: {
     fontSize: 16,
+    color: 'white'
   },
   category: {
     fontSize: 14,
-    margin: 10,
-    alignItems: 'center'
+    fontWeight: '700',
+    alignItems: 'center',
+    color: 'white',
+    marginLeft: 10,
+    marginBottom: 5
   },
   website: {
     fontSize: 14,
     alignItems: 'center',
+  },
+  buttonRound :{
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 65,
+    height: 65,
+    backgroundColor: accentColor,
+    borderRadius: 65,
+    marginTop: 20
   }
 });
 

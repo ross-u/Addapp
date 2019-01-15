@@ -11,6 +11,8 @@ class SearchHeaderButton extends Component {
         <Icon
           name='search'
           type='font-awesome'
+          size={28}
+          color="white"
           onPress={ () => this.props.navigation.navigate('FindView')}/>
       </View>
     );
@@ -21,8 +23,9 @@ class SearchHeaderButton extends Component {
 
 const styles = StyleSheet.create({
   searchBtn: {
-    padding: 5,
-    marginRight: 8
+    padding: 2,
+    marginTop: 3,
+    marginRight: 18
   }
 });
 

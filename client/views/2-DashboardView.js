@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet, Button, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { storeContacts, storeMyId, storeMyProfile }  from '../redux/actions/actions';
 
@@ -7,14 +7,26 @@ import HeadersActions from './../components/HeadersActions';
 import ContactsScrollPanel from './../components/ContactsScrollPanel';
 import DashboardActions from './../components/buttons/DashboardActions';
 
+import { backgroundColor, headerColor } from '../utils/style';
 
 const BASE_URL = "http://192.168.1.149:3000/user-friends";
 
 class Dashboard extends Component {
+  state = {
+    noContactsToShow: false
+  }
+  
   static navigationOptions = {
+    headerLeft: null,
+    headerBackgroundTransitionPreset: 'toggle',
     title: 'Dashboard',
     headerRight: (
       <HeadersActions></HeadersActions>),
+    headerStyle: { backgroundColor: headerColor },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
   };
 
   getMyContacts = async () => {
@@ -30,64 +42,72 @@ class Dashboard extends Component {
       this.props.storeMyProfile(myProfile[0]);
       this.props.storeContacts(contacts);
     })
-    .catch( (err) => console.log('getMyContactsError',err))
+    .catch( (err) => {
+      setTimeout( () => {
+        this.setState({noContactsToShow: true});
+        console.log('getMyContactsError',err);
+      }, 500);
+    } 
+    );
   };
   
   componentDidMount () {
-    this.getMyContacts();
+    setTimeout( () => {
+      this.getMyContacts();
+    }, 1000);
   }
   
   render() {
     const { contacts } = this.props;
      //console.log('CONTACTS', contacts);
 
-     return (
-       <View style={styles.container}>
+     return <View style={styles.container}>
+         {this.state.noContactsToShow ? <View style={styles.container}>
+             <View style={styles.noContactsMessageWrapper}>
+               <View style={{ paddingBottom: 149, alignItems: 'center' }}>
+                 <Text style={{ paddingBottom: 10}}>
+                   NO CONTACTS TO SHOW
+                 </Text>
+                 <Text>Add contacts</Text>
+               </View>
 
-        <View style={styles.scrollWrapper}>
-          <ContactsScrollPanel/>
-        </View>
-        
-        <View style={styles.actionsWrapper}>
-          <DashboardActions></DashboardActions>
-        </View>
+               <View style={styles.actionsWrapper}>
+                 <DashboardActions />
+               </View>
+             </View>
+           </View> : <View style={styles.container}>
+             <View style={styles.scrollWrapper}>
+               <ContactsScrollPanel />
+             </View>
 
-      </View>
-    )
+             <View style={styles.actionsWrapper}>
+               <DashboardActions />
+             </View>
+           </View>}
+       </View>;
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: backgroundColor
   },
   scrollWrapper: {
     flex: 1,
-    padding: 10,
+    paddingTop: 10,
     height: 200,
     alignItems: 'center'
   },
-  actionsWrapper: {
-    height: 160,
-  },
-  searchWrapper: {
-    padding: 10,
-    alignItems: 'center'
-  },
-  boxSmall: {
-    width: 200,
-    height: 60,
-    marginBottom: 10,
-    marginRight: 10,
-    backgroundColor: 'skyblue',
-  },
-  boxLarge: {
-    height: 50,
-    backgroundColor: 'steelblue',
-  },
-  contactActions: {
+  noContactsMessageWrapper: {
+    flex: 1,
+    height: 400,
+    paddingTop: 240,
     justifyContent: 'center',
-    width: 200
+    alignContent: 'center',
+  },
+  actionsWrapper: {
+    height: 120,
   }
 });
 

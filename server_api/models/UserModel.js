@@ -24,11 +24,6 @@ const addContacts = async (id, contactsIdArray) => {
     { _id: id },
     { $push: { contacts: { $each: [...contactsIdArray]} } }
   );
-
-  // return User.find({
-  //   '_id': { $in : idArray} 
-  // });
-
 };
 
 const getMyProfile = (id) => {

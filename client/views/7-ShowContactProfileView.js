@@ -52,15 +52,6 @@ export default class ContactProfileView extends Component {
             {`${website}`}
           </Text>
 
-          <Icon
-            style={{ position: 'absoulute', top: '100'}}
-            type='font-awesome'
-            name='share-alt'
-            size={22}
-            raised={true}
-            onPress={() => shareProfileToQRC(contact)}
-          />
-
         </View>
         <Text style={styles.category}> Social </Text>
         <View style={styles.iconsContainer}>

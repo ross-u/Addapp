@@ -1,75 +1,142 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Dimensions, Keyboard } from 'react-native';
-import { Button } from 'react-native-elements';
+import { View, StyleSheet, Dimensions, Keyboard, TouchableOpacity, Text, TextInput, Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-
-import { connect } from 'react-redux';
-import { storeMyProfile, storeMyId }  from '../../redux/actions/actions';
-
 import { Formik } from 'formik';
-import { TextField } from 'react-native-material-textfield';
+import { accentColor } from './../../utils/style';
+import { shrinkLogo } from '../../redux/actions/actions';
 
-const BASE_URL = "http://192.168.1.149:3000/me";
 const { width } = Dimensions.get('window');
 
 class LoginActions extends Component {
+  state = {
+    borderColorU: 'white',
+    borderColorD: 'white',
+    borderSize: 0.5,
+    inputFontSizeU: 16,
+    inputFontSizeD: 16,
+    marginBottomD: 150,
+    logoResized: false
+  }
+
+  componentDidMount () {
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
+  }
+
+  componentWillUnmount () {
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
+  }
+
+  _keyboardDidShow = () => {
+    this.props.shrinkLogo();
+  }
+
+  _keyboardDidHide = () => {
+    this.props.resetLogo();
+  }
 
   render() {
+    const { borderColorU, borderColorD, borderSize, inputFontSizeU, inputFontSizeD, marginBottomD } = this.state;
+    // const {shrinkLogo} = this.props;
+    const onFocusU = () => {
+      this.setState({
+        inputFontSizeU: 20,
+        inputFontSizeD: 16,
+        borderColorU: accentColor,
+        marginBottomD: 16,
+        // logoResized: true
+      });
+      // if (!this.state.logoResized) shrinkLogo();
+    };
+    const onFocusD = () => {
+      this.setState({
+        inputFontSizeD: 20,
+        inputFontSizeU: 16,
+        borderColorD: accentColor,
+        marginBottomD: 16,
+        // logoResized: true
+      });
+      // if (!this.state.logoResized) shrinkLogo();
+    };
+
+    const onBlurU = () => {
+      this.setState({
+        borderColorU: '#ededed',
+      })
+    };
+    const onBlurD = () => {
+      this.setState({
+        borderColorD: '#ededed',
+        borderSize: 0.2
+      })
+    };
+
+
     return (
       <View style={styles.container}>
 
-      <Formik 
-            initialValues={{ username: '', password: '' }} 
-            onSubmit={ values => {
-                console.log(JSON.stringify(values, null, 2));
+      <Formik
+          initialValues={{ username: '', password: '' }} 
+          onSubmit={ values => {
                 Keyboard.dismiss();
+                console.log(JSON.stringify(values, null, 2));
                 this.props.navigation.navigate('Dashboard');
               }
             }>
           {({ handleChange, handleSubmit, values }) => (
 
             <View style={styles.wrapper}>
-
-              <TextField
-                style={styles.formField}
+              <TextInput
+                textContentType="username"
+                keyboardAppearance="dark"
+                multiline={false}
+                keyboardType="email-address"
+                clearButtonMode="always"
+                onBlur={() => onBlurU()}
+                onFocus={() => onFocusU()}
+                style={{borderBottomColor: borderColorU, borderBottomWidth: borderSize, fontSize: inputFontSizeU, marginBottom: 25 }}
+                returnKeyLabel={'next'}
                 onChangeText={handleChange('username')}
                 value={values.username}
-                label="Username"
+                label=" "
                 placeholder="Username"
               />
 
-              <TextField
-                style={styles.formField}
+              <TextInput
+                textContentType="password"
+                onBlur={() => onBlurD()}
+                onFocus={() => onFocusD()}
+                style={{ borderBottomColor: borderColorD, borderBottomWidth: borderSize, fontSize: inputFontSizeD, marginBottom: marginBottomD  }}
                 onChangeText={handleChange('password')}
                 value={values.password}
-                label="Password"
+                returnKeyLabel={'next'}
+                secureTextEntry={true}
+                label=" "
                 placeholder="Password"
               />
 
-              <Button
+              <TouchableOpacity
+                style={styles.button}
                 onPress={handleSubmit}
-                buttonStyle={styles.button}
-                raised
-                title='Login'
-                fontSize={24}
-              />
+              >
+                <Text style={styles.buttonText}>Login</Text>
+              </TouchableOpacity>
+              
 
               </View>
             )}
           </Formik>
 
         <View style={styles.buttonWrapper}>
-        </View>
-
-        <View style={styles.buttonWrapper}>
-          <Button
-            buttonStyle={styles.button}
+          <TouchableOpacity
+            style={styles.button}
             onPress={ () => this.props.navigation.navigate('CreateProfile')}
-            raised
             title='Sign Up' 
-            fontSize={24}
-            />
+          >
+          <Text style={styles.buttonText}>Sign Up</Text>
+          </TouchableOpacity>
         </View>
 
       </View>
@@ -82,21 +149,36 @@ class LoginActions extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttonWrapper: {
     alignItems: 'center',
-    marginBottom: 10
+    marginBottom: 10,
+    paddingBottom: 20
   },
   button :{
-    width: 225,
+    width: width - 160,
+    padding: 12,
+    marginTop: 10,
+    backgroundColor: accentColor,
+    color: 'black',
+
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // width: 210,
+    // height: 60,
+    borderRadius: 30,
+  },
+  buttonText: {
+    fontSize: 24
   },
   wrapper: {
     alignContent: 'center',
-    width: width - 100
+    width: width - 160
   },
-  formField: {
-  }
+
 })
 
 export default LoginActions = withNavigation(LoginActions);

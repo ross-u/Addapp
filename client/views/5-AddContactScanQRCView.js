@@ -4,7 +4,7 @@ import { Button, Avatar, FormLabel, FormInput, FormValidationMessage } from 'rea
 import { BarCodeScanner, Permissions, Constants, Camera } from 'expo';
 import { withNavigation } from 'react-navigation';
 
-import { decompressProfile } from './../modules/profile-obj-compress';
+import { decompressProfile } from './../utils/profile-obj-compress';
 
 import HeadersActions from '../components/HeadersActions';
 

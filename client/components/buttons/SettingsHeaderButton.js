@@ -9,9 +9,10 @@ class SettingsHeaderButton extends Component {
     return (
       <View style={styles.settingsBtn}>
         <Icon
-          name='user-circle-o'
+          name='user-circle'
           type='font-awesome'
-          size={28}
+          size={32}
+          color="white"
           onPress={() => this.props.navigation.navigate('MyProfile')} />
       </View>
     );
@@ -22,9 +23,9 @@ class SettingsHeaderButton extends Component {
 
 const styles = StyleSheet.create({
   settingsBtn: {
-    padding: 5,
-    marginRight: 5,
-    marginTop: 0
+    padding: 2,
+    marginRight: 10,
+    marginTop: 1
 
   }
 });

@@ -10,7 +10,7 @@ import { ImagePicker } from 'expo';
 
 
 import { withNavigation } from 'react-navigation';
-import { createNewProfile } from './../modules/profile-obj-compress';
+import { createNewProfile } from './../utils/profile-obj-compress';
 
 const { width } = Dimensions.get('window');
 // const minDate= "1900-05-01";

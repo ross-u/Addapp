@@ -29,3 +29,12 @@ export const storeMyProfile = (myProfile) => (
 export const storeMyProfileJSONString = (JSONString) => (
   { type: 'STORE_MY_PROFILE_AS_JSON_STRING', JSONString }
 );
+
+export const shrinkLogo = (myProfile) => (
+  { type: 'SHRINK_LOGO', myProfile }
+);
+
+
+export const expandLogo = (myProfile) => (
+  { type: 'EXPAND_LOGO', myProfile }
+);
