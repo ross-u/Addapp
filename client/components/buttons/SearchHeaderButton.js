@@ -13,7 +13,7 @@ class SearchHeaderButton extends Component {
           type='font-awesome'
           size={28}
           color="white"
-          onPress={ () => this.props.navigation.navigate('FindView')}/>
+          onPress={ () => console.log('this.props.navigation.navigate(FindView)')}/>
       </View>
     );
   };

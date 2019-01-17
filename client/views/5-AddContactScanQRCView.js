@@ -73,7 +73,7 @@ class BarcodeScanner extends React.Component {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.buttonRound}
-            onPress={() => console.log('SCAN BUTTON PRESED')}
+            onPress={() => this.props.navigation.goBack()}
           >
             <Icon
               type='entypo'
@@ -82,6 +82,7 @@ class BarcodeScanner extends React.Component {
               color="black"
             />
           </TouchableOpacity>
+          <Text style={styles.whiteText}>Go Back</Text>
         </View>
         
 
@@ -178,6 +179,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 4,
     borderLeftWidth: 0.2,
     borderRightWidth: 0.2,
+  },
+  whiteText: {
+    fontSize: 20,
+    marginTop: 10,
+    fontWeight: '100',
+    color: '#FFFFFF'
   }
 });
 

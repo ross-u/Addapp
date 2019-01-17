@@ -18,6 +18,9 @@ router.get('/user-friends/:id', controller.getUsersFriends);
 router.post('/image/save', controller.saveImage);
 
 router.post('/contact', controller.addContact);
+
+router.delete('/remove-contacts', controller.removeContacts);
+
 router.get('/contact', controller.getAllContacts);
 router.put('/contact/:id', controller.updateContact);
 router.delete('/contact/:id', controller.deleteContact);

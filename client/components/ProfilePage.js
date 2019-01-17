@@ -42,7 +42,7 @@ export default class ContactProfileView extends Component {
             onPress={() => console.log("Works!")}
           />
           <Text style={styles.name}> {`${fName} ${lName}`} </Text>
-          <Text style={styles.jobtitle}> {`${occupation} at Codeworks`} </Text>
+          <Text style={styles.jobtitle}> {`${occupation}`} </Text>
           <Text style={styles.details}>
             Lives in - {`${loc.country}, ${loc.place}`}
           </Text>

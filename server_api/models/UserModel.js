@@ -26,6 +26,14 @@ const addContacts = async (id, contactsIdArray) => {
   );
 };
 
+const removeContacts = async (id, contactsIdArray) => {
+
+  return User.update(
+    { _id: id },
+    { $pull: { contacts: { $in: [...contactsIdArray]} } }
+  );
+};
+
 const getMyProfile = (id) => {
   return User.find( { _id: id } );
 };
@@ -51,6 +59,7 @@ module.exports = {
   getAllUsers,
   updateUser,
   addContacts,
+  removeContacts,
   getMyProfile,
   getUsersFriends,
   deleteUser

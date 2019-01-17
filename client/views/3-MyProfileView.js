@@ -57,11 +57,11 @@ class MyProfileView extends Component {
             onPress={() => console.log("Works!")}
           />
           <Text style={styles.name}> {`${fName} ${lName}`} </Text>
-          <Text style={styles.jobtitle}> {`${occupation} at Codeworks`} </Text>
+          <Text style={styles.jobtitle}> {`${occupation}`} </Text>
           <Text style={styles.details}>
             Lives in - {`${loc.country}, ${loc.place}`}
           </Text>
-          <Text style={styles.miniInfo}>from <Text style={styles.category}>{` ${birthplace.country}`} </Text> </Text>
+          {/* <Text style={styles.miniInfo}>from <Text style={styles.category}>{` ${birthplace.country}`} </Text> </Text> */}
 
           <TouchableOpacity
             style={styles.yellowButtonRound}

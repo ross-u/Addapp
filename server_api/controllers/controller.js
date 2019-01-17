@@ -73,6 +73,24 @@ const addContacts = async (ctx) => {
   }
 };
 
+const removeContacts = async (ctx) => {
+  const { id, contactsIdArray } = ctx.request.body;
+  console.log('IN removeContacts');
+  console.log('IN removeContacts', id);
+  console.log('IN removeContacts', contactsIdArray);
+  try {
+    await UserModel.removeContacts(id, contactsIdArray);
+    const myProfile = await UserModel.getMyProfile(id);
+    const myFriendsArray = await UserModel.getUsersFriends(myProfile);
+    // myFriendsArray.push(myProfile[0]);
+    ctx.body = myFriendsArray;
+    ctx.status = 200;
+  } catch (err) {
+    ctx.status = 500;
+    console.error(err);
+  }
+};
+
 const getMyProfile = async (ctx) => {
   const { id } = ctx.params;
   try {
@@ -121,6 +139,8 @@ const addContact = async (ctx) => {
   }
 };
 
+
+
 const getAllContacts = async (ctx) => {
   try {
     ctx.body = await ContactModel.getAllContacts();
@@ -160,6 +180,7 @@ module.exports = {
   getAllUsers,
   updateUser,
   addContacts,
+  removeContacts,
   getMyProfile,
   getUsersFriends,
   deleteUser,

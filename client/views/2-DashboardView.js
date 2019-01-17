@@ -47,7 +47,7 @@ class Dashboard extends Component {
       setTimeout( () => {
         this.setState({noContactsToShow: true});
         console.log('getMyContactsError', err);
-      }, 200);
+      }, 1200);
     } 
     );
   };

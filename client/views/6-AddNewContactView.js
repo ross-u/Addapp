@@ -99,7 +99,7 @@ class AddNewContactView extends Component {
             source={{ uri: photo }}
             onPress={() => console.log("Works!")}
           />
-          <Text style={styles.name}> {`${fName} ${lName}`} </Text>
+          <Text numberOfLines={1} style={styles.name}> {`${fName} ${lName}`} </Text>
           <Text style={styles.jobtitle}> {`${occupation}`} </Text>
           <Text style={styles.details}>
             Lives in - {`${loc.country}, ${loc.place}`}

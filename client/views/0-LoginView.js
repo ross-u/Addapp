@@ -27,31 +27,19 @@ class LoginView extends Component {
    getMyIDUponLoginAndStoreIt = (username) => {
      let myID = '';
      if ( username === 'ross' ) myID = '5c3baa4c3a9a4827458432cb';
-    //  else if ( username === 'luca' ) myID = '';
-    //  else if ( username === 'gabe' ) myID = '';
+     else if ( username === 'arnold' ) myID = '5c3bb0363a9a4827458432ce';
+     else if ( username === 'devon' ) myID = '5c3ee04794bfa418478be29f';
+     else if ( username === 'luca' ) myID = '5c3c6b4b03e8521e722e1b96';
      this.props.storeMyId(myID);
   }
-  
-  // getMyProfileFromDB = () => {
-  //   fetch(`${BASE_URL}/${this.props.me._id}`, {
-  //     method: "GET",
-  //     headers: { 'Content-Type': 'application/json' }
-  //   })
-  //   .then(rawData => rawData.json())
-  //   .then( (myProfile) => {
-  //     this.props.storeMyProfile(myProfile[0]);
-  //   });
-  // };
 
   shrinkLogo = () => {
     this.setState({ logoHeight:100, logoWidth:100, logoTextHeight:20,logoTextWidth: 63 })
   }
-
   resetLogo = () => {
     this.setState({
       logoHeight: 140, logoWidth: 140, logoTextHeight: 27, logoTextWidth: 90 })
   }
-  
   // Refactor - This 2 functions should run upon successfull login after the button click
   componentDidMount () {
     this.getMyIDUponLoginAndStoreIt('ross');

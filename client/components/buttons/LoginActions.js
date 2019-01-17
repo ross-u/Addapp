@@ -96,7 +96,7 @@ class LoginActions extends Component {
                 clearButtonMode="always"
                 onBlur={() => onBlurU()}
                 onFocus={() => onFocusU()}
-                style={{borderBottomColor: borderColorU, borderBottomWidth: borderSize, fontSize: inputFontSizeU, marginBottom: 25 }}
+                style={{borderBottomColor: borderColorU, borderBottomWidth: borderSize, fontSize: inputFontSizeU, color: '#FFFFFF', marginBottom: 25 }}
                 returnKeyLabel={'next'}
                 onChangeText={handleChange('username')}
                 value={values.username}
@@ -108,7 +108,7 @@ class LoginActions extends Component {
                 textContentType="password"
                 onBlur={() => onBlurD()}
                 onFocus={() => onFocusD()}
-                style={{ borderBottomColor: borderColorD, borderBottomWidth: borderSize, fontSize: inputFontSizeD, marginBottom: marginBottomD  }}
+                style={{ borderBottomColor: borderColorD, borderBottomWidth: borderSize, fontSize: inputFontSizeD, color: '#FFFFFF', marginBottom: marginBottomD  }}
                 onChangeText={handleChange('password')}
                 value={values.password}
                 returnKeyLabel={'next'}

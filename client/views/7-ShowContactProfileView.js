@@ -19,7 +19,7 @@ class ContactProfileView extends Component {
 
   static navigationOptions = {
     headerBackgroundTransitionPreset: 'toggle',
-    title: 'Add Contact',
+    title: 'View Profile',
     headerRight: (
       <HeadersActions></HeadersActions>),
     headerStyle: { backgroundColor: headerColor },
@@ -69,7 +69,7 @@ class ContactProfileView extends Component {
           <Text style={styles.details}>
             Lives in - {`${loc.country}, ${loc.place}`}
           </Text>
-          <Text style={styles.miniInfo}>from <Text style={styles.category}>{` ${birthplace.country}`} </Text> </Text>
+          {/* <Text style={styles.miniInfo}>from <Text style={styles.category}>{` ${birthplace.country}`} </Text> </Text> */}
 
           <TouchableOpacity style={styles.yellowButtonRound}>
             <Icon git status
@@ -89,6 +89,17 @@ class ContactProfileView extends Component {
 
           <ScrollView horizontal contentContainerstyle={styles.iconsScrollView}>
 
+            <Icon iconStyle={styles.icons}
+              containerStyle={styles.iconShadow}
+
+              type='entypo'
+              name='linkedin'
+              color='#517fa4'
+              size={28}
+              raised={true}
+              onPress={() => canOpenURL(linkedIn)}
+            />
+            
             <Icon
               iconStyle={styles.icons}
               containerStyle={styles.iconShadow}
@@ -101,16 +112,6 @@ class ContactProfileView extends Component {
               onPress={() => canOpenURL(github)}
             />
 
-            <Icon iconStyle={styles.icons}
-              containerStyle={styles.iconShadow}
-
-              type='font-awesome'
-              name='user-circle-o'
-              color='#517fa4'
-              size={28}
-              raised={true}
-              onPress={() => canOpenURL(cv)}
-            />
 
             <Icon iconStyle={styles.icons}
               containerStyle={styles.iconShadow}
