@@ -8,15 +8,13 @@ router.post('/user', controller.addUser);
 
 router.get('/user', controller.getAllUsers);  // ok
 router.post('/user/add-contacts', controller.addContacts);  // ok
-router.delete('/user/delete/:id', controller.deleteUser);
+router.delete('/user/delete/:id', controller.deleteUser);  // ok
 
-router.put("/user/:id", controller.updateUser);
-router.get('/me/:id', controller.getMyProfile);
-router.get('/user-friends/:id', controller.getUsersFriends);
+router.put("/user/:id", controller.updateUser);  // ok
+router.get('/me/:id', controller.getMyProfile);  // ok
+router.get('/user-friends/:id', controller.getUsersFriends);  // ok
 
 router.post('/image/save', controller.saveImage);
-
-router.post('/contact', controller.addContact);
 
 router.delete('/remove-contacts', controller.removeContacts);
 
