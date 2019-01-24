@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 import { storeMyProfile, storeMyId }  from '../redux/actions/actions';
 import { backgroundColor } from '../utils/style';
 
-const BASE_URL = "http://192.168.1.149:3000/me";
+// run in bash  :  ip route get 1
+const BASE_URL = "http://192.168.0.157:3000/me";
 
 class LoginView extends Component {
   state = {

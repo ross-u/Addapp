@@ -8,7 +8,7 @@ import { backgroundColor, headerColor, accentColor, dimmedAccentColor, accentCol
 
 import HeadersActions from '../components/HeadersActions';
 
-const BASE_URL = "http://192.168.1.149:3000";
+const BASE_URL = "http://192.168.0.157:3000";
 
 const canOpenURL = (url) => {
   Linking.canOpenURL(url).then(supported => {

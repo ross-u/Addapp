@@ -10,7 +10,7 @@ import DashboardActions from './../components/buttons/DashboardActions';
 
 import { backgroundColor, headerColor, accentColor } from '../utils/style';
 
-const BASE_URL = "http://192.168.1.149:3000/user-friends";
+const BASE_URL = "http://192.168.0.157:3000/user-friends";
 
 class Dashboard extends Component {
   state = {

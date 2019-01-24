@@ -17,7 +17,7 @@ const { width } = Dimensions.get('window');
 // const maxDate = "2016-06-01";
 const minDate= "01 Jan 1900";
 const maxDate = "01 Jan 2001";
-const BASE_URL = "http://192.168.1.149:3000";
+const BASE_URL = "http://192.168.0.157:3000";
 
 class FormCreateProfile extends Component {
   state = {
