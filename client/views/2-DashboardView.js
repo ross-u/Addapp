@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
-import {  Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { storeContacts, storeMyId, storeMyProfile }  from '../redux/actions/actions';
 
@@ -9,8 +8,9 @@ import ContactsScrollPanel from './../components/ContactsScrollPanel';
 import DashboardActions from './../components/buttons/DashboardActions';
 
 import { backgroundColor, headerColor, accentColor } from '../utils/style';
+import { API_URL } from './../config';
 
-const BASE_URL = "http://192.168.0.157:3000/user-friends";
+const BASE_URL = `${API_URL}/user-friends`;
 
 class Dashboard extends Component {
   state = {
@@ -31,14 +31,13 @@ class Dashboard extends Component {
   };
 
   getMyContacts = async () => {
-    console.log('Dashboard - fetch,  this.props.myID',  this.props.myID);
     await fetch(`${BASE_URL}/${this.props.myID}`, {
       method: "GET",
       headers: { 'Content-Type': 'application/json' }
     })
     .then(rawData => rawData.json())
     .then( (contacts) => {
-      // splice last item in the contacts array, as USERS actuall profile was pushed within `getUsersFriends` as last to avoid making double request
+
       let myProfile = contacts.splice(contacts.length -1, 1)
       this.props.storeMyProfile(myProfile[0]);
       this.props.storeContacts(contacts);
