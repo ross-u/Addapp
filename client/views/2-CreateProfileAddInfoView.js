@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Button, TextInput } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import FormCreateProfileAddInfo from '../components/CreateProfileAddInfo';
 
 export default class CreateProfileAddInfoView extends Component {

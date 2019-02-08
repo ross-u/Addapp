@@ -4,15 +4,14 @@ import { View, StyleSheet, Text } from 'react-native';
 import NavigationRowBottom from './../components/NavigationRowBottom';
 import DashboardActions from './../components/buttons/DashboardActions';
 import SearchBarHeader from './../components/buttons/SearchBarHeader';
-import { backgroundColor, headerColor, accentColor } from './../utils/style';
+import { headerColor } from './../utils/style';
 
 export default class FindView extends Component {
   static navigationOptions = {
     headerLeft: null,
     headerBackgroundTransitionPreset: 'toggle',
     title: 'Dashboard',
-    header: (
-      <SearchBarHeader></SearchBarHeader>),
+    header: (<SearchBarHeader></SearchBarHeader>),
     headerStyle: { backgroundColor: headerColor },
     headerTintColor: '#fff',
     headerTitleStyle: {

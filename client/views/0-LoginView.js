@@ -20,7 +20,7 @@ class LoginView extends Component {
     header: null
   };
 
-   getMyIDUponLoginAndStoreIt = (username) => {
+   getAndStoreUserId = (username) => {
      let myID = '';
      if ( username === 'ross' ) myID = '5c3baa4c3a9a4827458432cb';
      else if ( username === 'luca' ) myID = '5c3c6b4b03e8521e722e1b96';
@@ -36,7 +36,7 @@ class LoginView extends Component {
   }
   // Refactor - This 2 functions should run upon successfull login after the button click
   componentDidMount () {
-    this.getMyIDUponLoginAndStoreIt('ross');
+    this.getAndStoreUserId('ross');
     // this.getMyProfileFromDB(this.props.me._id);
   }
   

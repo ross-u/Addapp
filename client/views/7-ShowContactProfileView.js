@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, Linking, ScrollView, TouchableOpacity } from 'react-native';
 import { Avatar, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { storeFriendsProfileJSONString, storeFriendsProfileInView }  from '../redux/actions/actions';
+import { storeFriendsProfileJSONString, storeFriendsProfileInView } from '../redux/actions/actions';
 import { compressProfile } from './../utils/profile-obj-compress';
 import { backgroundColor, headerColor, accentColor, dimmedAccentColor, accentColorShadow } from '../utils/style';
 
@@ -20,8 +20,7 @@ class ContactProfileView extends Component {
   static navigationOptions = {
     headerBackgroundTransitionPreset: 'toggle',
     title: 'View Profile',
-    headerRight: (
-      <HeadersActions></HeadersActions>),
+    headerRight: (<HeadersActions></HeadersActions>),
     headerStyle: { backgroundColor: headerColor },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -35,26 +34,21 @@ class ContactProfileView extends Component {
     this.props.storeFriendsProfileJSONString(jsonString);
   };
 
-  componentDidMount () {
-    // const { navigation } = this.props;
-    // this.stringifyCurrentProfile(navigation.getParam('contact'));
-
-    console.log('IN FRIEND PROFILE ', this.props.friendsProfileInView)
+  componentDidMount() {
     const { navigation } = this.props;
     this.stringifyCurrentProfile(navigation.getParam('contact'));
   };
-  
+
   render() {
     const { navigation } = this.props;
     let contact = navigation.getParam('contact');
-
-
-    const { fName, lName, occupation, currentLocation: loc, email, birthplace  } = contact.personal;
+    const { fName, lName, occupation, currentLocation: loc, email, birthplace } = contact.personal;
     const { facebook, instagram, twitter, blog } = contact.social;
     const { linkedIn, github, cv, website } = contact.networking;
-    const {photo} = contact;
+    const { photo } = contact;
+
     return (
-      
+
       <View style={styles.container}>
         <View style={styles.profileWrapper}>
           <Avatar
@@ -62,14 +56,12 @@ class ContactProfileView extends Component {
             xlarge
             rounded
             source={{ uri: photo }}
-            onPress={() => console.log("Works!")}
           />
           <Text style={styles.name}> {`${fName} ${lName}`} </Text>
           <Text style={styles.jobtitle}> {`${occupation}`} </Text>
           <Text style={styles.details}>
             Lives in - {`${loc.country}, ${loc.place}`}
           </Text>
-          {/* <Text style={styles.miniInfo}>from <Text style={styles.category}>{` ${birthplace.country}`} </Text> </Text> */}
 
           <TouchableOpacity style={styles.yellowButtonRound}>
             <Icon git status
@@ -77,10 +69,10 @@ class ContactProfileView extends Component {
               name='link'
               size={36}
               color="black"
-              onPress={() => this.props.navigation.navigate('ShareFriendsQRCodeView',  { contact: contact })}
+              onPress={() => this.props.navigation.navigate('ShareFriendsQRCodeView', { contact: contact })}
             />
           </TouchableOpacity>
-          
+
         </View>
 
         <View style={styles.iconsContainer}>
@@ -99,7 +91,7 @@ class ContactProfileView extends Component {
               raised={true}
               onPress={() => canOpenURL(linkedIn)}
             />
-            
+
             <Icon
               iconStyle={styles.icons}
               containerStyle={styles.iconShadow}
@@ -253,7 +245,6 @@ const styles = StyleSheet.create({
     backgroundColor: accentColor,
     borderRadius: 65,
     marginTop: 20,
-
     borderBottomColor: 'rgb(204, 160, 15)',
     borderLeftColor: 'rgb(204, 160, 15)',
     borderRightColor: 'rgb(204, 160, 15)',
@@ -269,18 +260,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 65,
     marginTop: 20,
-
     borderBottomColor: 'rgb(80, 79, 79)',
     borderLeftColor: 'rgb(80, 79, 79)',
     borderRightColor: 'rgb(80, 79, 79)',
     borderBottomWidth: 4,
-
-
-    // borderBottomColor: 'rgb(87, 87, 87)',
-    // borderLeftColor: 'rgb(87, 87, 87)',
-    // borderRightColor: 'rgb(87, 87, 87)',
-    // borderBottomWidth: 3,
-
     borderLeftWidth: 0.1,
     borderRightWidth: 0.1,
   }

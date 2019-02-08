@@ -3,42 +3,31 @@ import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-nati
 import { Avatar } from 'react-native-elements';
 import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
-import { storeFriendsProfileJSONString, storeFriendsProfileInView }  from '../redux/actions/actions';
+import { storeFriendsProfileJSONString, storeFriendsProfileInView } from '../redux/actions/actions';
 
 const { width } = Dimensions.get('window');
-
-
 
 class ContactTab extends Component {
   state = {
     selectedContact: {}
   }
-  
-  componentDidMount() {
 
-    // this.setState({selectedContact: this.props.contact});
-    // this.handleSelectedContact(this.state.selectedContact);
-  }
-  
   handleSelectedContact = (selectedContact) => {
     this.props.storeFriendsProfileInView(selectedContact);
-    // console.log('CONTACT TAB, Profile Store', this.props.friendsProfileInView.personal.fName);
-    
-    this.props.navigation.navigate('ShowContactProfile', {
-      contact: selectedContact
-    });
+    this.props.navigation.navigate('ShowContactProfile',
+      {
+        contact: selectedContact
+      });
   }
-
 
   render() {
     const { fName, lName, occupation } = this.props.contact.personal;
-    const {photo} = this.props.contact;
+    const { photo } = this.props.contact;
 
     return (
       <TouchableOpacity
         style={styles.box}
-        // `props.navigation` is being accessed with react-navigation's -> withNavigation()
-        onPress={ () =>  this.handleSelectedContact(this.props.contact)}
+        onPress={() => this.handleSelectedContact(this.props.contact)}
       >
         <View style={styles.avatarWrapper}>
           <Avatar
@@ -53,11 +42,10 @@ class ContactTab extends Component {
           <Text style={styles.textName} numberOfLines={1}> {fName} {lName}</Text>
           <Text style={styles.textSmall} numberOfLines={1}> {occupation}</Text>
         </View>
-        <View  style={styles.statusIconsWrapper}>
+        <View style={styles.statusIconsWrapper}>
 
         </View>
       </TouchableOpacity>
-
     )
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, ActivityIndicator, StyleSheet, Dimensions, Button } from 'react-native';
+import { View, ScrollView, ActivityIndicator, StyleSheet, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { storeContacts }  from '../redux/actions/actions';
 import { accentColor } from '../utils/style';

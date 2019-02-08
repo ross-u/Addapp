@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements'
 import { withNavigation } from 'react-navigation';
 
@@ -12,21 +12,19 @@ class SettingsHeaderButton extends Component {
           name='user-circle'
           type='font-awesome'
           size={32}
-          color="white"
-          onPress={() => this.props.navigation.navigate('MyProfile')} />
+          color='white'
+          onPress={() => this.props.navigation.navigate('MyProfile')}
+        />
       </View>
     );
   };
 }
 
-
-
 const styles = StyleSheet.create({
   settingsBtn: {
     padding: 2,
     marginRight: 10,
-    marginTop: 1
-
+    marginTop: 1,
   }
 });
 
