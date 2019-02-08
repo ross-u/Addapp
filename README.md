@@ -4,6 +4,7 @@
 # Addapp
 
 [![Build Status](https://travis-ci.org/ross-u/Addapp.svg?branch=master)](https://travis-ci.org/ross-u/Addapp)
+[![Dependencies](https://img.shields.io/librariesio/github/ross-u/Addapp.svg)
 
 ## What is Addapp?
 Addapp is a mobile app that provides a simple offline way of establishing a 'digital handshake' - easy sharing of contact details between users, via QR codes.
