@@ -2,7 +2,7 @@
 Addapp is a mobile app that provides a simple way to establish a 'digital handshake' between users and provide ability to easily share your contact detais with others offline via QR codes.
 
 ## Motivation
-**Addapp** was built in order to provide a quick and intuitive way of adding and sharing contacts while online of offline. Built-in smarthpone Contacts Book apps require most of the information to be manually typed, while Addapp solves this with a quick QR code scan.
+**Addapp** was built in a quest of making a quicker and more intuitive way for adding and sharing contacts while online or offline. Built-in smarthpone Contacts Book apps require most of the information to be manually typed, and the main idea was solving it with a quick QR code scan.
 
 ## Build status
 Build status of continus integration i.e. travis, appveyor etc. Ex. - 
