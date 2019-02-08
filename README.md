@@ -28,6 +28,11 @@ Include logo/demo screenshot etc.
 
 ## Getting Started
 
+```
+git clone https://github.com/ross-u/Addapp.git
+cd Addapp
+```
+
 ### Server/API
 1. Install [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) 
 
