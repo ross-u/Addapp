@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Image, Dimensions, Keyboard } from 'react-native';
-import { Avatar, Button } from 'react-native-elements';
+import { View, StyleSheet, Image, Keyboard } from 'react-native';
 
 import LoginActions from './../components/buttons/LoginActions';
 import { connect } from 'react-redux';
 import { storeMyProfile, storeMyId }  from '../redux/actions/actions';
 import { backgroundColor } from '../utils/style';
+import { API_URL } from './../config';
 
-// run in bash  :  ip route get 1
-const BASE_URL = "http://192.168.0.157:3000/me";
+const BASE_URL = `${API_URL}/me`;
 
 class LoginView extends Component {
   state = {
@@ -21,15 +20,9 @@ class LoginView extends Component {
     header: null
   };
 
-  //  Refactor - This function need to be refactored upon implementing the 
-  //  authentication.
-  //  Currently it only works as a mock
-
    getMyIDUponLoginAndStoreIt = (username) => {
      let myID = '';
      if ( username === 'ross' ) myID = '5c3baa4c3a9a4827458432cb';
-     else if ( username === 'arnold' ) myID = '5c3bb0363a9a4827458432ce';
-     else if ( username === 'devon' ) myID = '5c3ee04794bfa418478be29f';
      else if ( username === 'luca' ) myID = '5c3c6b4b03e8521e722e1b96';
      this.props.storeMyId(myID);
   }
@@ -48,6 +41,7 @@ class LoginView extends Component {
   }
   
   render() {
+
     const { logoHeight, logoWidth, logoTextHeight, logoTextWidth } = this.state;
 
 

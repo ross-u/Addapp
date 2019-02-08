@@ -7,8 +7,9 @@ import { compressProfile } from './../utils/profile-obj-compress';
 import { backgroundColor, headerColor, accentColor, dimmedAccentColor, accentColorShadow } from '../utils/style';
 
 import HeadersActions from '../components/HeadersActions';
+import { API_URL } from './../config';
 
-const BASE_URL = "http://192.168.0.157:3000";
+const BASE_URL = `${API_URL}/user/add-contacts`;
 
 const canOpenURL = (url) => {
   Linking.canOpenURL(url).then(supported => {
@@ -52,7 +53,7 @@ class AddNewContactView extends Component {
       contactsIdArray: contactsIdArray
     };
 
-    fetch(`${BASE_URL}/user/add-contacts`, {
+    fetch(BASE_URL, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

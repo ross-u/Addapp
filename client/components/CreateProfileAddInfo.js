@@ -7,13 +7,10 @@ import { TextField } from 'react-native-material-textfield';
 
 import { withNavigation } from 'react-navigation';
 import { populateNewProfile } from '../utils/profile-obj-compress';
+import { API_URL } from './../config';
 
 const { width } = Dimensions.get('window');
-// const minDate= "1900-05-01";
-// const maxDate = "2016-06-01";
-const minDate= "01 Jan 1900";
-const maxDate = "01 Jan 2001";
-const BASE_URL = "http://192.168.0.157:3000";
+const BASE_URL = `${API_URL}/user`;
 
 class FormCreateProfileAddInfo extends Component {
   
@@ -24,7 +21,7 @@ class FormCreateProfileAddInfo extends Component {
   createMyProfileInDB = async (newProfile) => {
     let payload = JSON.stringify(newProfile);
 
-    await fetch(`${BASE_URL}/user`, {
+    await fetch(BASE_URL, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: payload

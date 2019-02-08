@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { storeContacts }  from '../redux/actions/actions';
 import { TextField } from 'react-native-material-textfield';
 import { ImagePicker } from 'expo';
+import { API_URL } from './../config';
 
 
 import { withNavigation } from 'react-navigation';
@@ -17,7 +18,7 @@ const { width } = Dimensions.get('window');
 // const maxDate = "2016-06-01";
 const minDate= "01 Jan 1900";
 const maxDate = "01 Jan 2001";
-const BASE_URL = "http://192.168.0.157:3000";
+const BASE_URL = API_URL;
 
 class FormCreateProfile extends Component {
   state = {
