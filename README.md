@@ -18,11 +18,13 @@ If you're using any code style like xo, standard etc. That will help others whil
 ## Screenshots
 Include logo/demo screenshot etc.
 
-## Tech/framework used
-<b>Built with</b>
+## Tech Stack
+<b>Backend:</b>
 - [Koa](https://koajs.com/)
 - [MongoDB](https://www.mongodb.com/)
 - [Mongoose](https://mongoosejs.com/)
+
+<b>Frontend:</b>
 - [React Native](https://facebook.github.io/react-native/)
 - [Redux](https://redux.js.org/)
 - [Expo](https://expo.io/)
