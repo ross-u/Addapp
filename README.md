@@ -1,5 +1,5 @@
 
-        <img src="Addapp/logo_header.png" />
+        <img src="Addapp/logo_header.png"?sanitize=true&raw=true" />
 
 # Addapp
 ## What is Addapp?
