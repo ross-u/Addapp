@@ -9,10 +9,6 @@ const mongoose = require('./db');
 // Config variables
 const { PORT, URI } = require('./config');
 
-
-// Error handling middleware
-// P E N D I N G
-
 // Middleware
 app.use(serve('./public/profile_images/'));
 app.use(logger());
