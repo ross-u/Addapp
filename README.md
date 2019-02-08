@@ -1,5 +1,5 @@
 
-        <img src="Addapp/logo_header.png"?sanitize=true&raw=true" />
+        <img src=" https://raw.githubusercontent.com/Addapp/logo_header.png"?sanitize=true&raw=true" />
 
 # Addapp
 ## What is Addapp?
