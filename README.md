@@ -27,7 +27,13 @@ Include logo/demo screenshot etc.
 - [Expo](https://expo.io/)
 
 ## Getting Started
-What makes your project stand out?
+
+### Server/API
+
+To install the required dependencies run `npm install` from the ``.
+
+The data you need is stored in JSON format in /data/world-cup.json. Your mission is to create the interface to serve that data to a client.
+As usual, when you have a problem first look up the official docs and investigate your issue online. If you can’t quickly find a solution, call for help providing your problem’s details and the steps you’ve taken so far.
 
 ## License
 A short snippet describing the license (MIT, Apache etc)
