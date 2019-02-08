@@ -1,3 +1,6 @@
+
+        <img src="Addapp/logo_header.png" />
+
 # Addapp
 ## What is Addapp?
 Addapp is a mobile app that provides a simple way of establishing a 'digital handshake' - easy sharing of contact details  between users offline via QR codes.
