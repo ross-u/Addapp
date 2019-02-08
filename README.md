@@ -1,5 +1,5 @@
 
-![Addapp Logo](https://github.com/ross-u/Addapp/blob/master/logo_header.png)
+![Addapp Logo](https://github.com/ross-u/Addapp/blob/master/addapp_logo_large.png)
 
 # Addapp
 ## What is Addapp?
@@ -16,7 +16,7 @@ Build status of continus integration i.e. travis, appveyor etc. Ex. -
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
 
 ## Screenshots
-Include logo/demo screenshot etc.
+![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/screenshots.png)
 
 ## Tech Stack
 <b>Backend:</b>
