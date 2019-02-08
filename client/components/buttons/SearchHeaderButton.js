@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { withNavigation } from 'react-navigation';
 
@@ -13,13 +13,11 @@ class SearchHeaderButton extends Component {
           type='font-awesome'
           size={28}
           color="white"
-          onPress={ () => console.log('this.props.navigation.navigate(FindView)')}/>
+          onPress={() => console.log('this.props.navigation.navigate(FindView)')} />
       </View>
     );
   };
 }
-
-
 
 const styles = StyleSheet.create({
   searchBtn: {

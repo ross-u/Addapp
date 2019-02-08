@@ -5,7 +5,6 @@ const controller = require('./controllers/controller');
 
 router.post('/user', controller.addUser);
 
-
 router.get('/user', controller.getAllUsers);  // ok
 router.post('/user/add-contacts', controller.addContacts);  // ok
 router.delete('/user/delete/:id', controller.deleteUser);  // ok

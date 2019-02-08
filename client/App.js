@@ -1,11 +1,8 @@
 import React from 'react';
-
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducers from './redux/reducers/userReducer';
-
+import reducers from './redux/reducers/reducers';
 import { StyleSheet, View } from 'react-native';
-
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import LoginView from './views/0-LoginView';
@@ -27,15 +24,15 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-// takes a "Route Config object" & "Options object" and returns a React component
+// RootStack receives a "Route Config object" & "Options object" and returns a React component
 // RootStack is passed to createAppContainer()
 const RootStack = createStackNavigator(
 
   { // Route Config object
-    LoginView: LoginView, // LoginView: { screen : LoginView }
+    LoginView: LoginView,
     CreateProfile: CreateProfile,
     CreateProfileAddInfo: CreateProfileAddInfoView,
-    Dashboard: Dashboard, // Dashboard: { screen : Dashboard }
+    Dashboard: Dashboard,
     MyProfile: MyProfile,
     ShareQRCode: ShareQRCodeView,
     ShareFriendsQRCodeView: ShareFriendsQRCodeView,
@@ -45,7 +42,7 @@ const RootStack = createStackNavigator(
     ContactTab: ContactTab,  
     FindView: FindView,
   },
-  { // Options object - specifies what is the initial route in a stack
+  { // Options object - specifies the initial route in a stack
     initialRouteName: 'LoginView',
     // initialRouteName: 'CreateProfile',
     // initialRouteName: 'Dashboard',

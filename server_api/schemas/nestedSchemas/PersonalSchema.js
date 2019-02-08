@@ -1,7 +1,6 @@
 const mongoose = require('../../db');
 const LocationSchema = require('./LocationSchema');
 
-// Schema constructor
 const Schema = mongoose.Schema;
 
 const PersonalSchema = new Schema(
@@ -18,7 +17,4 @@ const PersonalSchema = new Schema(
   { _id : false }
 );
 
-// Export the Schema to be used for Model Schema creation.
 module.exports = PersonalSchema;
-
-// email: { type: String, default: '' },

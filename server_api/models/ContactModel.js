@@ -5,15 +5,10 @@ const ContactSchema = require('./../schemas/ContactSchema');
 const Contact = mongoose.model('contacts', ContactSchema );
 
 const addContact = (ContactObject) => {
-  // Pending to return the `id` of each inserted ContactObject 
-  // to be stored in User document, in the array `contactsDocument`
   return Contact.create(ContactObject);
 }
 
 const getAllContacts = () => {
-  // return entire collection, sorted
-  // return Contact.find().sort({ fname: -1 });
-
   return Contact.find({});
 }
 

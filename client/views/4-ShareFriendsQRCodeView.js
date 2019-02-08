@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Dimensions } from 'react-native';
-import {  Avatar, Icon } from 'react-native-elements';
+import {  Avatar } from 'react-native-elements';
 import QRCode from 'react-native-qrcode';
 import { connect } from 'react-redux';
 import { storeFriendsProfileJSONString }  from '../redux/actions/actions';
@@ -27,14 +27,12 @@ class ShareFriendsQRCodeView extends Component {
     let contact = navigation.getParam('contact');
 
 
-    const { fName, lName, occupation, currentLocation: loc, email, birthplace  } = contact.personal;
+    const { fName, lName, occupation, currentLocation: loc, email  } = contact.personal;
     const { facebook, instagram, twitter, blog } = contact.social;
     const { linkedIn, github, cv, website } = contact.networking;
     const {photo} = contact;
 
     const  QRCstring  = this.props.friendsProfileInViewJSONString;
-    console.log('QRCstring.length', QRCstring.length);
-    console.log('QRCstring ', QRCstring );
     
     return (
       <View style={styles.container}>
@@ -44,7 +42,6 @@ class ShareFriendsQRCodeView extends Component {
             large
             rounded
             source={{ uri: photo }}
-            onPress={() => console.log("Works!")}
           />
           <Text style={styles.name}> {`${fName} ${lName}`} </Text>
           <Text style={styles.jobtitle}> {`${occupation}`} </Text>
@@ -91,12 +88,12 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 26,
-    color: "white"
+    color: 'white'
   },
   jobtitle: {
     fontSize: 18,
     marginBottom: 10,
-    color: "white"
+    color: 'white'
   },
   addMe: {
     fontSize: 18,
