@@ -3,8 +3,7 @@
 
 # Addapp
 
-[![Build Status](https://travis-ci.org/akashnimare/foco.svg?branch=master)](https://travis-ci.org/akashnimare/foco)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
+[![Build Status](https://travis-ci.org/ross-u/Addapp.svg?branch=master)](https://travis-ci.org/ross-u/Addapp)
 
 ## What is Addapp?
 Addapp is a mobile app that provides a simple offline way of establishing a 'digital handshake' - easy sharing of contact details between users, via QR codes.
