@@ -1,8 +1,8 @@
 ## Addapp
-A little info about your project and/ or overview that explains **what** the project is about.
+Addapp is a mobile app that provides asimple way to establish a 'digital handshake' between users and provide ability to easily add new contacts including bio, all social newtwork links, phones, emails and other relevant information while being offline via QR codes.
 
 ## Motivation
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+Built-in smarthpone Contacts Book apps do not provide an easy way to quickly add all the contact data and require all the input to be manually typed 
 
 ## Build status
 Build status of continus integration i.e. travis, appveyor etc. Ex. - 
