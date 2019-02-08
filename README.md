@@ -29,11 +29,19 @@ Include logo/demo screenshot etc.
 ## Getting Started
 
 ### Server/API
+1. Install [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) 
 
-To install the required dependencies run `npm install` from the ``.
+2. To install the required dependencies run `npm install` from the `/server_api` directory.
 
-The data you need is stored in JSON format in /data/world-cup.json. Your mission is to create the interface to serve that data to a client.
-As usual, when you have a problem first look up the official docs and investigate your issue online. If you can’t quickly find a solution, call for help providing your problem’s details and the steps you’ve taken so far.
+3. To start the server run `npm start` from the `/server_api` directory.
+
+
+### React Native App 
+1. Install [Expo](https://expo.io/) 
+
+2. To install the required dependencies for the React Native App, run `npm install` from the `/client` directory.
+
+3. To start the Expo DevTools run `npm start` from the `/client` directory.
 
 ## License
 A short snippet describing the license (MIT, Apache etc)
