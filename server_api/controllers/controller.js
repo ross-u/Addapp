@@ -1,4 +1,3 @@
-// controller.js
 const UserModel = require('../models/UserModel');
 const ContactModel = require('../models/ContactModel');
 const fs = require('fs');
@@ -26,7 +25,6 @@ const saveImage = async (ctx) => {
 const addUser = async (ctx) => {
   try {
     const result = await UserModel.addUser(ctx.request.body);
-    console.log('CREATE USER, ID TO RETUN ON SERVER : ', result._id);
     ctx.body = result._id;
     ctx.status = 201;
   } catch (err) {
@@ -57,7 +55,6 @@ const updateUser = async (ctx) => {
 
 
 const addContacts = async (ctx) => {
-  console.log('IN addContacts');
   const { id, contactsIdArray } = ctx.request.body;
   try {
     await UserModel.addContacts(id, contactsIdArray);
@@ -75,14 +72,10 @@ const addContacts = async (ctx) => {
 
 const removeContacts = async (ctx) => {
   const { id, contactsIdArray } = ctx.request.body;
-  console.log('IN removeContacts');
-  console.log('IN removeContacts', id);
-  console.log('IN removeContacts', contactsIdArray);
   try {
     await UserModel.removeContacts(id, contactsIdArray);
     const myProfile = await UserModel.getMyProfile(id);
     const myFriendsArray = await UserModel.getUsersFriends(myProfile);
-    // myFriendsArray.push(myProfile[0]);
     ctx.body = myFriendsArray;
     ctx.status = 200;
   } catch (err) {
@@ -106,7 +99,6 @@ const getUsersFriends = async (ctx) => {
   const { id } = ctx.params;
   try {
     const myProfile = await UserModel.getMyProfile(id);
-    
     ctx.body = await UserModel.getUsersFriends(myProfile);
     ctx.body.push(myProfile[0]);
     ctx.status = 200;
@@ -128,7 +120,6 @@ const deleteUser = async (ctx) => {
 };
 
 // CONTACTS COLLECTION MODEL
-
 const addContact = async (ctx) => {
   try {
     await ContactModel.addContact(ctx.request.body);
@@ -138,8 +129,6 @@ const addContact = async (ctx) => {
     console.error(err);
   }
 };
-
-
 
 const getAllContacts = async (ctx) => {
   try {
@@ -172,10 +161,8 @@ const deleteContact = async (ctx) => {
   }
 };
 
-
 module.exports = {
   saveImage,
-
   addUser,
   getAllUsers,
   updateUser,
@@ -184,7 +171,6 @@ module.exports = {
   getMyProfile,
   getUsersFriends,
   deleteUser,
-
   addContact,
   getAllContacts,
   updateContact,
