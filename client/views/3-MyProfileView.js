@@ -1,52 +1,75 @@
-import React, { Component } from 'react';
-import { View, StyleSheet, Text, Linking, ScrollView, TouchableOpacity } from 'react-native';
-import { Avatar, Icon } from 'react-native-elements';
-import { connect } from 'react-redux';
-import { storeContacts, storeMyId, storeMyProfileJSONString }  from '../redux/actions/actions';
-import { compressProfile } from './../utils/profile-obj-compress';
-import { backgroundColor, headerColor, accentColor, dimmedAccentColor, accentColorShadow } from '../utils/style';
+import React, { Component } from "react";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Linking,
+  ScrollView,
+  TouchableOpacity
+} from "react-native";
+import { Avatar, Icon } from "react-native-elements";
+import { connect } from "react-redux";
+import {
+  storeContacts,
+  storeMyId,
+  storeMyProfileJSONString
+} from "../redux/actions/actions";
+import { compressProfile } from "./../utils/profile-obj-compress";
+import {
+  backgroundColor,
+  headerColor,
+  accentColor,
+  dimmedAccentColor,
+  accentColorShadow
+} from "../utils/style";
 
-import HeadersActions from './../components/HeadersActions';
+import HeadersActions from "./../components/HeadersActions";
 
-const canOpenURL = (url) => {
-  Linking.canOpenURL(url).then(supported => {
-    if (!supported) console.log('Can\'t handle url: ' + url);
-    else return Linking.openURL(url);
-  }).catch(err => console.error('An error occurred', err));
+const canOpenURL = url => {
+  Linking.canOpenURL(url)
+    .then(supported => {
+      if (!supported) console.log(`Can't handle url: ${url}`);
+      else return Linking.openURL(url);
+    })
+    .catch(err => console.error("An error occurred", err));
 };
 
 class MyProfileView extends Component {
   static navigationOptions = {
-    headerBackgroundTransitionPreset: 'toggle',
-    title: 'My Profile',
-    headerRight: (
-      <HeadersActions></HeadersActions>),
+    headerBackgroundTransitionPreset: "toggle",
+    title: "My Profile",
+    headerRight: <HeadersActions />,
     headerStyle: { backgroundColor: headerColor },
-    headerTintColor: '#fff',
+    headerTintColor: "#fff",
     headerTitleStyle: {
-      fontWeight: 'bold',
-    },
+      fontWeight: "bold"
+    }
   };
 
-  stringifyMyProfile = (myProfile) => {
+  stringifyMyProfile = myProfile => {
     const myProfileCompressed = compressProfile(myProfile);
     const jsonString = JSON.stringify(myProfileCompressed);
     this.props.storeMyProfileJSONString(jsonString);
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.stringifyMyProfile(this.props.me);
-  };
+  }
 
   render() {
     const myProfile = this.props.me;
-    
-    const { fName, lName, occupation, currentLocation: loc, email, birthplace  } = myProfile.personal;
+
+    const {
+      fName,
+      lName,
+      occupation,
+      currentLocation: loc,
+      email
+    } = myProfile.personal;
     const { facebook, instagram, twitter, blog } = myProfile.social;
     const { linkedIn, github, cv, website } = myProfile.networking;
-    const {photo} = myProfile;
+    const { photo } = myProfile;
     return (
-      
       <View style={styles.container}>
         <View style={styles.profileWrapper}>
           <Avatar
@@ -61,56 +84,55 @@ class MyProfileView extends Component {
           <Text style={styles.details}>
             Lives in - {`${loc.country}, ${loc.place}`}
           </Text>
-          {/* <Text style={styles.miniInfo}>from <Text style={styles.category}>{` ${birthplace.country}`} </Text> </Text> */}
 
-          <TouchableOpacity
-            style={styles.yellowButtonRound}
-          >
-            <Icon git status
-              type='font-awesome'
-              name='share-alt'
+          <TouchableOpacity style={styles.yellowButtonRound}>
+            <Icon
+              git
+              status
+              type="font-awesome"
+              name="share-alt"
               size={36}
               color="black"
-              onPress={() => this.props.navigation.navigate('ShareQRCode', { myProfile: myProfile })}
+              onPress={() =>
+                this.props.navigation.navigate("ShareQRCode", {
+                  myProfile: myProfile
+                })
+              }
             />
           </TouchableOpacity>
-
         </View>
 
         <View style={styles.iconsContainer}>
-
           <Text style={styles.category}> Networking </Text>
 
           <ScrollView horizontal contentContainerstyle={styles.iconsScrollView}>
-
             <Icon
               iconStyle={styles.icons}
               containerStyle={styles.iconShadow}
-
-              type='font-awesome'
-              name='github'
-              color='#00aced'
+              type="font-awesome"
+              name="github"
+              color="#00aced"
               size={28}
               raised={true}
               onPress={() => thiscanOpenURL(github)}
             />
 
-            <Icon iconStyle={styles.icons}
+            <Icon
+              iconStyle={styles.icons}
               containerStyle={styles.iconShadow}
-
-              type='font-awesome'
-              name='user-circle-o'
-              color='#517fa4'
+              type="font-awesome"
+              name="user-circle-o"
+              color="#517fa4"
               size={28}
               raised={true}
               onPress={() => thiscanOpenURL(cv)}
             />
 
-            <Icon iconStyle={styles.icons}
+            <Icon
+              iconStyle={styles.icons}
               containerStyle={styles.iconShadow}
-
-              name='mail-outline'
-              color='#0984e3'
+              name="mail-outline"
+              color="#0984e3"
               size={28}
               raised={true}
               onPress={() => thiscanOpenURL(email)}
@@ -119,48 +141,49 @@ class MyProfileView extends Component {
             <Icon
               iconStyle={styles.icons}
               containerStyle={styles.iconShadow}
-
-              type='entypo'
-              name='facebook'
+              type="entypo"
+              name="facebook"
               size={28}
               raised={true}
               onPress={() => thiscanOpenURL(facebook)}
             />
 
-            <Icon iconStyle={styles.icons}
+            <Icon
+              iconStyle={styles.icons}
               containerStyle={styles.iconShadow}
-              type='font-awesome'
-              name='instagram'
-              color='#00aced'
+              type="font-awesome"
+              name="instagram"
+              color="#00aced"
               size={28}
               raised={true}
               onPress={() => thiscanOpenURL(instagram)}
             />
 
-            <Icon iconStyle={styles.icons}
+            <Icon
+              iconStyle={styles.icons}
               containerStyle={styles.iconShadow}
-              type='font-awesome'
-              name='twitter'
-              color='#517fa4'
+              type="font-awesome"
+              name="twitter"
+              color="#517fa4"
               size={28}
               raised={true}
               onPress={() => thiscanOpenURL(twitter)}
             />
 
-            <Icon iconStyle={styles.icons}
+            <Icon
+              iconStyle={styles.icons}
               containerStyle={styles.iconShadow}
-              type='font-awesome'
-              name='meetup'
-              color='#517fa4'
+              type="font-awesome"
+              name="meetup"
+              color="#517fa4"
               size={28}
               raised={true}
               onPress={() => thiscanOpenURL(blog)}
             />
-
           </ScrollView>
         </View>
       </View>
-    )
+    );
   }
 }
 
@@ -173,38 +196,38 @@ const styles = StyleSheet.create({
   profileWrapper: {
     flex: 4,
     padding: 10,
-    alignItems: "center",
+    alignItems: "center"
   },
   avatarContainer: {
-    borderBottomColor: 'rgb(204, 160, 15)',
-    borderLeftColor: 'rgb(204, 160, 15)',
-    borderRightColor: 'rgb(204, 160, 15)',
+    borderBottomColor: "rgb(204, 160, 15)",
+    borderLeftColor: "rgb(204, 160, 15)",
+    borderRightColor: "rgb(204, 160, 15)",
     borderBottomWidth: 5,
     borderLeftWidth: 0.1,
-    borderRightWidth: 0.1,
+    borderRightWidth: 0.1
   },
   iconsContainer: {
     flex: 2,
-    flexDirection: 'column',
+    flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    justifyContent: "flex-start",
+    justifyContent: "flex-start"
   },
   iconsScrollView: {
     flex: 1,
     flexDirection: "row",
-    color: "black",
+    color: "black"
   },
   iconShadow: {
-    borderBottomColor: 'rgb(204, 160, 15)',
-    borderLeftColor: 'rgb(204, 160, 15)',
-    borderRightColor: 'rgb(204, 160, 15)',
+    borderBottomColor: "rgb(204, 160, 15)",
+    borderLeftColor: "rgb(204, 160, 15)",
+    borderRightColor: "rgb(204, 160, 15)",
     borderBottomWidth: 4,
     borderLeftWidth: 0.2,
-    borderRightWidth: 0.2,
+    borderRightWidth: 0.2
   },
   icons: {
-    color: "black",
+    color: "black"
   },
   name: {
     fontSize: 30,
@@ -247,27 +270,26 @@ const styles = StyleSheet.create({
     borderRadius: 65,
     marginTop: 20,
 
-    borderBottomColor: 'rgb(204, 160, 15)',
-    borderLeftColor: 'rgb(204, 160, 15)',
-    borderRightColor: 'rgb(204, 160, 15)',
+    borderBottomColor: "rgb(204, 160, 15)",
+    borderLeftColor: "rgb(204, 160, 15)",
+    borderRightColor: "rgb(204, 160, 15)",
     borderBottomWidth: 5,
     borderLeftWidth: 0.1,
-    borderRightWidth: 0.1,
+    borderRightWidth: 0.1
   },
   iconShadow: {
     alignItems: "center",
     justifyContent: "center",
     width: 65,
     height: 65,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderRadius: 65,
     marginTop: 20,
 
-    borderBottomColor: 'rgb(80, 79, 79)',
-    borderLeftColor: 'rgb(80, 79, 79)',
-    borderRightColor: 'rgb(80, 79, 79)',
+    borderBottomColor: "rgb(80, 79, 79)",
+    borderLeftColor: "rgb(80, 79, 79)",
+    borderRightColor: "rgb(80, 79, 79)",
     borderBottomWidth: 4,
-
 
     // borderBottomColor: 'rgb(87, 87, 87)',
     // borderLeftColor: 'rgb(87, 87, 87)',
@@ -275,20 +297,24 @@ const styles = StyleSheet.create({
     // borderBottomWidth: 3,
 
     borderLeftWidth: 0.1,
-    borderRightWidth: 0.1,
+    borderRightWidth: 0.1
   }
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   contacts: state.contacts,
   me: state.myProfile,
   myProfileJSONString: state.myProfileJSONString
 });
 
-const mapActionToProps = (dispatch) => ({
-  storeContacts: ((contacts) => dispatch(storeContacts(contacts))),
-  storeMyId: ((id) => dispatch(storeMyId(id))),
-  storeMyProfileJSONString: ((JSONString) => dispatch(storeMyProfileJSONString(JSONString)))
+const mapActionToProps = dispatch => ({
+  storeContacts: contacts => dispatch(storeContacts(contacts)),
+  storeMyId: id => dispatch(storeMyId(id)),
+  storeMyProfileJSONString: JSONString =>
+    dispatch(storeMyProfileJSONString(JSONString))
 });
 
-export default connect(mapStateToProps, mapActionToProps)(MyProfileView);
+export default connect(
+  mapStateToProps,
+  mapActionToProps
+)(MyProfileView);

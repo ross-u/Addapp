@@ -1,4 +1,4 @@
-// MongoDB custom connection module.
+// MongoDB connection
 const MongoClient = require('mongodb').MongoClient;
 const models = {};
 

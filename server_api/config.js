@@ -1,6 +1,6 @@
 const dbUrl = 'mongodb://localhost:27017';
 const dbName = 'soloproject-notefy';
-const URI = `${dbUrl}/${dbName}`; // concat the URL and Database name
+const URI = `${dbUrl}/${dbName}`;
 
 const PORT = 3000;
 

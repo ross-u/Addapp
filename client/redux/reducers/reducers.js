@@ -1,15 +1,11 @@
-import { combineReducers } from 'redux';
-
-const myemptyProfile = {}
-
+import { combineReducers } from "redux";
 
 const contacts = (state = [], action) => {
   switch (action.type) {
-    case 'STORE_ALL_CONTACTS':
-    console.log('Contacts stored in Redux');
+    case "STORE_ALL_CONTACTS":
       return [...action.contacts];
 
-    case 'STORE_NEW_CONTACT':
+    case "STORE_NEW_CONTACT":
       return [...state, action.newContact];
 
     default:
@@ -17,17 +13,15 @@ const contacts = (state = [], action) => {
   }
 };
 
-// users Reducer
 const offlineContacts = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_CONTACT_ID_TO_OFFLINE_LIST':
-    console.log('in Reducer ADD_CONTACT_ID_TO_OFFLINE_LIST');
+    case "ADD_CONTACT_ID_TO_OFFLINE_LIST":
       let contactObject = {
         friendContact_id: action.newContactId
       };
       return [...state, contactObject];
 
-    case 'RESET_OFFLINE_LIST':
+    case "RESET_OFFLINE_LIST":
       return [];
 
     default:
@@ -35,9 +29,9 @@ const offlineContacts = (state = [], action) => {
   }
 };
 
-const myID = (state = '', action) => {
+const myID = (state = "", action) => {
   switch (action.type) {
-    case 'STORE_MY_ID':
+    case "STORE_MY_ID":
       return action.id;
 
     default:
@@ -47,7 +41,7 @@ const myID = (state = '', action) => {
 
 const myProfile = (state = {}, action) => {
   switch (action.type) {
-    case 'STORE_MY_PROFILE':
+    case "STORE_MY_PROFILE":
       return Object.assign({}, action.myProfile);
 
     default:
@@ -57,7 +51,7 @@ const myProfile = (state = {}, action) => {
 
 const friendsProfileInView = (state = {}, action) => {
   switch (action.type) {
-    case 'STORE_FRIENDS_PROFILE':
+    case "STORE_FRIENDS_PROFILE":
       return Object.assign({}, action.profile);
 
     default:
@@ -65,9 +59,9 @@ const friendsProfileInView = (state = {}, action) => {
   }
 };
 
-const myProfileJSONString = (state = '', action) => {
+const myProfileJSONString = (state = "", action) => {
   switch (action.type) {
-    case 'STORE_MY_PROFILE_AS_JSON_STRING':
+    case "STORE_MY_PROFILE_AS_JSON_STRING":
       return action.JSONString;
 
     default:
@@ -75,17 +69,15 @@ const myProfileJSONString = (state = '', action) => {
   }
 };
 
-const friendsProfileInViewJSONString = (state = '', action) => {
+const friendsProfileInViewJSONString = (state = "", action) => {
   switch (action.type) {
-    
-    case 'STORE_FRIENDS_PROFILE_AS_JSON_STRING':
+    case "STORE_FRIENDS_PROFILE_AS_JSON_STRING":
       return action.JSONString;
 
     default:
       return state;
   }
 };
-
 
 const reducers = combineReducers({
   contacts,

@@ -2,8 +2,6 @@ const mongoose = require('./../db');
 const NoteBoxSchema = require('./NoteBoxSchema');
 const LocationSchema = require('./nestedSchemas/LocationSchema');
 
-
-// Schema constructor
 const Schema = mongoose.Schema;
 
 const ContactSchema = new Schema(
@@ -31,7 +29,6 @@ const ContactSchema = new Schema(
   }
 );
 
-// Export the Schema to be used for Model Schema creation.
 module.exports = ContactSchema;
 
 

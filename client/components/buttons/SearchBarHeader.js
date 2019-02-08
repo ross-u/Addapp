@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { SearchBar } from 'react-native-elements'
 import { withNavigation } from 'react-navigation';
-import { backgroundColor, headerColor, accentColor } from './../../utils/style';
 
 class SearchBarHeader extends Component {
   render() {
@@ -16,8 +15,6 @@ class SearchBarHeader extends Component {
     );
   };
 }
-
-
 
 const styles = StyleSheet.create({
   searchBarContainer: {

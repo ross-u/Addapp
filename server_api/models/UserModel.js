@@ -1,7 +1,6 @@
 const mongoose = require('../db');
 const UserSchema = require('../schemas/UserSchema');
 
-// Create a `User` Model instance on the current mongoose connection.
 const User = mongoose.model('users', UserSchema );
 
 const addUser = (userObject) => {
@@ -9,7 +8,6 @@ const addUser = (userObject) => {
 };
 
 const getAllUsers = () => {
-  // return entire collection, sorted
   return User.find({});
 };
 
@@ -19,7 +17,6 @@ const updateUser = (updatedUserObject) => {
 };
 
 const addContacts = async (id, contactsIdArray) => {
-
   return User.update(
     { _id: id },
     { $push: { contacts: { $each: [...contactsIdArray]} } }
@@ -27,7 +24,6 @@ const addContacts = async (id, contactsIdArray) => {
 };
 
 const removeContacts = async (id, contactsIdArray) => {
-
   return User.update(
     { _id: id },
     { $pull: { contacts: { $in: [...contactsIdArray]} } }
@@ -47,8 +43,6 @@ const getUsersFriends = (myProfileRaw) => {
     '_id': { $in : idArray} 
   });
 }
-
-
 
 const deleteUser = (id) => {
   return User.findByIdAndDelete(id);
