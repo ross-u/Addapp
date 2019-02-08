@@ -19,10 +19,13 @@ If you're using any code style like xo, standard etc. That will help others whil
 Include logo/demo screenshot etc.
 
 ## Tech/framework used
-Ex. -
-
 <b>Built with</b>
-- [Electron](https://electron.atom.io)
+- [Koa](https://koajs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [React Native](https://facebook.github.io/react-native/)
+- [Redux](https://redux.js.org/)
+- [Expo](https://expo.io/)
 
 ## Features
 What makes your project stand out?
