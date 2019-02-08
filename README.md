@@ -1,5 +1,5 @@
 
-![Addapp Logo](https://raw.githubusercontent.com/ross-u/Addapp/logo_header.png)
+![Addapp Logo](https://github.com/ross-u/Addapp/logo_header.png)
 
 # Addapp
 ## What is Addapp?
