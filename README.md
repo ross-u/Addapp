@@ -6,12 +6,6 @@
 [![Build Status](https://travis-ci.org/ross-u/Addapp.svg?branch=master)](https://travis-ci.org/ross-u/Addapp)
 
 
-<p align="center">
-<a href="https://travis-ci.org/ross-u/Addapp"><img src="https://travis-ci.org/ross-u/Addapp.svg?branch=master" alt="Build Status"></a>
-<a href="https://david-dm.org/ross-u/Addapp"><img src="https://david-dm.org/ross-u/Addapp.svg" alt="Dependency Status"></a>
-<a href="https://david-dm.org/ross-u/Addapp/?type=dev"><img src="https://david-dm.org/ross-u/Addapp/dev-status.svg" alt="devDependency Status"></a>
-</p>
-
 ## What is Addapp?
 Addapp is a mobile app that provides a simple offline way of establishing a 'digital handshake' - easy sharing of contact details between users, via QR codes.
 With addapp anyone can share and save all contact details including social networks and other contact information in just one simple step.
