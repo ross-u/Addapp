@@ -17,15 +17,15 @@ With addapp anyone can share and save all contact details including social netwo
 ![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/screenshots.png)
 
 ## Tech Stack
-<b>Backend:</b>
-- [Koa](https://koajs.com/)
-- [MongoDB](https://www.mongodb.com/)
-- [Mongoose](https://mongoosejs.com/)
+<b>Back-end:</b>
+* [Koa](https://koajs.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Mongoose](https://mongoosejs.com/)
 
-<b>Frontend:</b>
-- [React Native](https://facebook.github.io/react-native/)
-- [Redux](https://redux.js.org/)
-- [Expo](https://expo.io/)
+<b>Front-end:</b>
+* [React Native](https://facebook.github.io/react-native/)
+* [Redux](https://redux.js.org/)
+* [Expo](https://expo.io/)
 
 ## Getting Started
 
