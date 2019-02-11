@@ -2,32 +2,31 @@
 ![Addapp Logo](https://github.com/ross-u/Addapp/blob/master/addapp_logo_large.png)
 
 # Addapp
+
+[![Build Status](https://travis-ci.org/ross-u/Addapp.svg?branch=master)](https://travis-ci.org/ross-u/Addapp)
+
+
 ## What is Addapp?
-Addapp is a mobile app that provides a simple way of establishing a 'digital handshake' - easy sharing of contact details  between users offline via QR codes.
+Addapp is a mobile app that provides a simple offline way of establishing a 'digital handshake' - easy sharing of contact details between users, via QR codes.
 With addapp anyone can share and save all contact details including social networks and other contact information in just one simple step.
 
-## Motivation
 **Addapp** aims to offer a quicker and more intuitive way for adding and sharing contacts while online or offline, as opposed to the built-in smarthpone Contacts Book apps which require most of the contact details to be manually typed.
 
-## Build status
-Build status of continus integration i.e. travis, appveyor etc. Ex. - 
-
-[![Build Status](https://travis-ci.org/akashnimare/foco.svg?branch=master)](https://travis-ci.org/akashnimare/foco)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
 
 ## Screenshots
-![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/screenshots.png)
+![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/Screenshot2.png)
+![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/Screenshot1.png)
 
 ## Tech Stack
-<b>Backend:</b>
-- [Koa](https://koajs.com/)
-- [MongoDB](https://www.mongodb.com/)
-- [Mongoose](https://mongoosejs.com/)
+<b>Back-end:</b>
+* [Koa](https://koajs.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Mongoose](https://mongoosejs.com/)
 
-<b>Frontend:</b>
-- [React Native](https://facebook.github.io/react-native/)
-- [Redux](https://redux.js.org/)
-- [Expo](https://expo.io/)
+<b>Front-end:</b>
+* [React Native](https://facebook.github.io/react-native/)
+* [Redux](https://redux.js.org/)
+* [Expo](https://expo.io/)
 
 ## Getting Started
 
