@@ -14,8 +14,8 @@ With addapp anyone can share and save all contact details including social netwo
 
 
 ## Screenshots
-![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/Screenshot1.png)
 ![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/Screenshot2.png)
+![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/Screenshot1.png)
 
 ## Tech Stack
 <b>Back-end:</b>
