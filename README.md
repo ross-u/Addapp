@@ -1,8 +1,6 @@
-# Addapp
-
 ![Addapp Logo](https://github.com/ross-u/Addapp/blob/master/addapp_logo_large.png)
 
-## What is Addapp?
+# Addapp
 Addapp is a mobile app that provides a simple offline way of establishing a 'digital handshake' - easy sharing of contact details between users, via QR codes.
 With addapp anyone can share and save all contact details including social networks and other contact information in just one simple step.
 
