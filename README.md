@@ -45,8 +45,3 @@ cd Addapp
 2. To install the required dependencies for the React Native App, run `npm install` from the `/client` directory.
 
 3. To start the Expo DevTools run `npm start` from the `/client` directory.
-
-## License
-A short snippet describing the license (MIT, Apache etc)
-
-MIT © [Yourname]()
