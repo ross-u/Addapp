@@ -19,7 +19,7 @@ cd Addapp
 
 ### Server/API
 
-1. Install [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) 
+1. Install [MongoDB](https://docs.mongodb.com/manual/administration/install-community/).
 
 2. To install the required dependencies run `npm install` from the `/server_api` directory.
 
@@ -27,7 +27,7 @@ cd Addapp
 
 
 ### React Native App 
-1. Install [Expo](https://expo.io/) 
+1. Install [Expo](https://expo.io/).
 
 2. To install the required dependencies for the React Native App, run `npm install` from the `/client` directory.
 
