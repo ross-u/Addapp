@@ -7,24 +7,8 @@ With addapp anyone can share and save all contact details including social netwo
 **Addapp** aims to offer a quicker and more intuitive way for adding and sharing contacts while online or offline, as opposed to the built-in smarthpone Contacts Book apps which require most of the contact details to be manually typed.
 
 
-## Screenshots
-
 ![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/Screenshot2.png)
 ![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/Screenshot1.png)
-
-
-## Tech Stack
-
-<b>Back-end:</b>
-* [Koa](https://koajs.com/)
-* [MongoDB](https://www.mongodb.com/)
-* [Mongoose](https://mongoosejs.com/)
-
-<b>Front-end:</b>
-* [React Native](https://facebook.github.io/react-native/)
-* [Redux](https://redux.js.org/)
-* [Expo](https://expo.io/)
-
 
 ## Getting Started
 
@@ -48,3 +32,16 @@ cd Addapp
 2. To install the required dependencies for the React Native App, run `npm install` from the `/client` directory.
 
 3. To start the Expo DevTools run `npm start` from the `/client` directory.
+
+
+## Tech Stack
+
+<b>Back-end:</b>
+* [Koa](https://koajs.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Mongoose](https://mongoosejs.com/)
+
+<b>Front-end:</b>
+* [React Native](https://facebook.github.io/react-native/)
+* [Redux](https://redux.js.org/)
+* [Expo](https://expo.io/)
