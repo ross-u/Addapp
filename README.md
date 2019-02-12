@@ -1,10 +1,6 @@
-
-![Addapp Logo](https://github.com/ross-u/Addapp/blob/master/addapp_logo_large.png)
-
 # Addapp
 
-[![Build Status](https://travis-ci.org/ross-u/Addapp.svg?branch=master)](https://travis-ci.org/ross-u/Addapp)
-
+![Addapp Logo](https://github.com/ross-u/Addapp/blob/master/addapp_logo_large.png)
 
 ## What is Addapp?
 Addapp is a mobile app that provides a simple offline way of establishing a 'digital handshake' - easy sharing of contact details between users, via QR codes.
@@ -50,7 +46,3 @@ cd Addapp
 
 3. To start the Expo DevTools run `npm start` from the `/client` directory.
 
-## License
-A short snippet describing the license (MIT, Apache etc)
-
-MIT © [Yourname]()
