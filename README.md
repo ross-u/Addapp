@@ -8,10 +8,13 @@ With addapp anyone can share and save all contact details including social netwo
 
 
 ## Screenshots
+
 ![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/Screenshot2.png)
 ![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/Screenshot1.png)
 
+
 ## Tech Stack
+
 <b>Back-end:</b>
 * [Koa](https://koajs.com/)
 * [MongoDB](https://www.mongodb.com/)
@@ -22,6 +25,7 @@ With addapp anyone can share and save all contact details including social netwo
 * [Redux](https://redux.js.org/)
 * [Expo](https://expo.io/)
 
+
 ## Getting Started
 
 ```
@@ -30,6 +34,7 @@ cd Addapp
 ```
 
 ### Server/API
+
 1. Install [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) 
 
 2. To install the required dependencies run `npm install` from the `/server_api` directory.
