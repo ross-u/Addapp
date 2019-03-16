@@ -7,6 +7,7 @@ With addapp anyone can share and save all contact details including social netwo
 **Addapp** aims to offer a quicker and more intuitive way for adding and sharing contacts while online or offline, as opposed to the built-in smarthpone Contacts Book apps which require most of the contact details to be manually typed.
 
 
+
 ![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/assets/master/Screenshot2.png)
 ![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/assets/master/Screenshot1.png)
 
@@ -18,6 +19,7 @@ cd Addapp
 ```
 
 ### Server/API
+
 
 1. Install [MongoDB](https://docs.mongodb.com/manual/administration/install-community/).
 
