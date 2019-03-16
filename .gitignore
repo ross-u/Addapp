@@ -28,3 +28,9 @@ dataMaps/
 *.tar
 *.zip
 
+
+# Files from the images directory
+profile_images/*
+
+# exception to the rule
+profile_images/.gitkeep
