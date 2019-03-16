@@ -8,8 +8,8 @@ With addapp anyone can share and save all contact details including social netwo
 
 
 
-![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/assets/master/Screenshot2.png)
-![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/assets/master/Screenshot1.png)
+![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/assets/Screenshot2.png)
+![Addapp Screenshots](https://github.com/ross-u/Addapp/blob/master/assets/Screenshot1.png)
 
 ## Getting Started
 
