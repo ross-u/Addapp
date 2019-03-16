@@ -1,8 +1,8 @@
 # Don't track content of these folders
 node_modules/
-someOtherfoler/
 dataMaps/
 .gitignore
+.expo/
 
 # Compiled source #
 ###################
@@ -27,3 +27,10 @@ dataMaps/
 *.rar
 *.tar
 *.zip
+
+
+# Files from the images directory
+profile_images/*
+
+# exception to the rule
+profile_images/.gitkeep
