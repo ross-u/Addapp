@@ -7,12 +7,12 @@ import {
   storeMyProfile
 } from "../redux/actions/actions";
 
-import HeadersActions from "./../components/HeadersActions";
-import ContactsScrollPanel from "./../components/ContactsScrollPanel";
-import DashboardActions from "./../components/buttons/DashboardActions";
+import HeadersActions from "../components/HeadersActions";
+import ContactsScrollPanel from "../components/ContactsScrollPanel";
+import DashboardActions from "../components/buttons/DashboardActions";
 
 import { backgroundColor, headerColor, accentColor } from "../utils/style";
-import { API_URL } from "./../config";
+import { API_URL } from "../config";
 
 const BASE_URL = `${API_URL}/user-friends`;
 
@@ -95,16 +95,16 @@ class Dashboard extends Component {
             </View>
           </View>
         ) : (
-          <View style={styles.container}>
-            <View style={styles.scrollWrapper}>
-              <ContactsScrollPanel />
-            </View>
+            <View style={styles.container}>
+              <View style={styles.scrollWrapper}>
+                <ContactsScrollPanel />
+              </View>
 
-            <View style={styles.actionsWrapper}>
-              <DashboardActions />
+              <View style={styles.actionsWrapper}>
+                <DashboardActions />
+              </View>
             </View>
-          </View>
-        )}
+          )}
       </View>
     );
   }

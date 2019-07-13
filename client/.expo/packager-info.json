@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://b2-2x6.ross-u.client.exp.direct",
+  "packagerNgrokUrl": "https://packager.b2-2x6.ross-u.client.exp.direct",
+  "ngrokPid": 13902
 }

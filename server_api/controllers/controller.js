@@ -8,13 +8,16 @@ const rootDir = `${path.dirname(require.main.filename)}/public/profile_images/`;
 const saveImage = async (ctx) => {
   const { imageBase64, name } = ctx.request.body;
   let id = uuid();
-  id = id.substring(0,7);
+  id = id.substring(0, 7);
   const fileName = `${name}${id}`;
   const fileExt = 'jpg';
 
 
   await fs.writeFile(`${rootDir}${fileName}.${fileExt}`, imageBase64, 'base64', function (err) {
-    console.log(err);
+    if (err) console.error(err);
+    else console.log('Image saved successfully');
+
+
   });
 
   ctx.body = `${fileName}.${fileExt}`;
@@ -61,7 +64,7 @@ const addContacts = async (ctx) => {
     const myProfile = await UserModel.getMyProfile(id);
     const myFriendsArray = await UserModel.getUsersFriends(myProfile);
     myFriendsArray.push(myProfile[0]);
-    
+
     ctx.body = myFriendsArray;
     ctx.status = 200;
   } catch (err) {

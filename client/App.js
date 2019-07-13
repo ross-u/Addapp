@@ -5,22 +5,22 @@ import reducers from './redux/reducers/reducers';
 import { StyleSheet, View } from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
-import LoginView from './views/0-LoginView';
-import CreateProfile from './views/1-CreateProfileView';
-import Dashboard from './views/2-DashboardView';
-import MyProfile from './views/3-MyProfileView';
-import ShareQRCodeView from './views/4-ShareQRCodeView';
-import AddContactScanQRCView from './views/5-AddContactScanQRCView';
-import AddNewContactView from './views/6-AddNewContactView';
-import ShowContactProfile from './views/7-ShowContactProfileView';
+import LoginView from './views/LoginView';
+import CreateProfile from './views/CreateProfileView';
+import Dashboard from './views/DashboardView';
+import MyProfile from './views/MyProfileView';
+import ShareQRCodeView from './views/ShareQRCodeView';
+import AddContactScanQRCView from './views/AddContactScanQRCView';
+import AddNewContactView from './views/AddNewContactView';
+import ShowContactProfile from './views/ShowContactProfileView';
 import FindView from './views/FindView';
 import ContactTab from './components/ContactTab';
-import CreateProfileAddInfoView from './views/2-CreateProfileAddInfoView';
-import ShareFriendsQRCodeView from './views/4-ShareFriendsQRCodeView';
+import CreateProfileAddInfoView from './views/CreateProfileAddInfoView';
+import ShareFriendsQRCodeView from './views/ShareFriendsQRCodeView';
 
 const store = createStore(
   reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && 
+  window.__REDUX_DEVTOOLS_EXTENSION__ &&
   window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
@@ -38,8 +38,8 @@ const RootStack = createStackNavigator(
     ShareFriendsQRCodeView: ShareFriendsQRCodeView,
     AddContactScanQRCView: AddContactScanQRCView,
     AddNewContact: AddNewContactView,
-    ShowContactProfile: ShowContactProfile, 
-    ContactTab: ContactTab,  
+    ShowContactProfile: ShowContactProfile,
+    ContactTab: ContactTab,
     FindView: FindView,
   },
   { // Options object - specifies the initial route in a stack

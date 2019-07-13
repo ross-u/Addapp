@@ -6,22 +6,20 @@ import {
   Keyboard,
   TouchableOpacity,
   Text,
-  TextInput
 } from "react-native";
 import { withNavigation } from "react-navigation";
 
 import { Formik } from "formik";
-import { accentColor, accentColorShadow } from "./../../utils/style";
+import { accentColor, accentColorShadow } from "../utils/style";
+import AuthInput from './AuthInput';
 
 const { width } = Dimensions.get("window");
 
 class LoginActions extends Component {
   state = {
-    borderColorU: "white",
-    borderColorD: "white",
     borderSize: 0.5,
-    inputFontSizeU: 16,
-    inputFontSizeD: 16,
+    inputFontSizeFieldUsername: 16,
+    inputFontSizeFieldPassword: 16,
     marginBottomD: 120,
     logoResized: false
   };
@@ -51,42 +49,6 @@ class LoginActions extends Component {
   };
 
   render() {
-    const {
-      borderColorU,
-      borderColorD,
-      borderSize,
-      inputFontSizeU,
-      inputFontSizeD,
-      marginBottomD
-    } = this.state;
-    const onFocusU = () => {
-      this.setState({
-        inputFontSizeU: 20,
-        inputFontSizeD: 16,
-        borderColorU: accentColor,
-        marginBottomD: 10
-      });
-    };
-    const onFocusD = () => {
-      this.setState({
-        inputFontSizeD: 20,
-        inputFontSizeU: 16,
-        borderColorD: accentColor,
-        marginBottomD: 10
-      });
-    };
-
-    const onBlurU = () => {
-      this.setState({
-        borderColorU: "#ededed"
-      });
-    };
-    const onBlurD = () => {
-      this.setState({
-        borderColorD: "#ededed",
-        borderSize: 0.2
-      });
-    };
 
     return (
       <View style={styles.container}>
@@ -94,55 +56,31 @@ class LoginActions extends Component {
           initialValues={{ username: "", password: "" }}
           onSubmit={values => {
             Keyboard.dismiss();
-            console.log(JSON.stringify(values, null, 2));
             this.props.navigation.navigate("Dashboard");
           }}
         >
           {({ handleChange, handleSubmit, values }) => (
             <View style={styles.wrapper}>
-              <TextInput
-                textContentType="username"
-                keyboardAppearance="dark"
-                multiline={false}
+              <AuthInput
+                inputName='Username'
+                valueFromFormikState={values.username}
                 keyboardType="email-address"
-                clearButtonMode="always"
-                onBlur={() => onBlurU()}
-                onFocus={() => onFocusU()}
-                style={{
-                  borderBottomColor: borderColorU,
-                  borderBottomWidth: borderSize,
-                  fontSize: inputFontSizeU,
-                  color: "#FFFFFF",
-                  marginBottom: 25
-                }}
-                returnKeyLabel={"next"}
-                onChangeText={handleChange("username")}
-                value={values.username}
-                label=" "
-                placeholder="Username"
+                handleChange={handleChange}
+              />
+              <AuthInput
+                inputName='Password'
+                valueFromFormikState={values.password}
+                keyboardType="email-address"
+                handleChange={handleChange}
               />
 
-              <TextInput
-                textContentType="password"
-                onBlur={() => onBlurD()}
-                onFocus={() => onFocusD()}
-                style={{
-                  borderBottomColor: borderColorD,
-                  borderBottomWidth: borderSize,
-                  fontSize: inputFontSizeD,
-                  color: "#FFFFFF",
-                  marginBottom: marginBottomD
-                }}
-                onChangeText={handleChange("password")}
-                value={values.password}
-                returnKeyLabel={"next"}
-                secureTextEntry={true}
-                label=" "
-                placeholder="Password"
-              />
-
-              <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-                <Text style={styles.buttonText}>Login</Text>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={handleSubmit}
+              >
+                <Text style={styles.buttonText}>
+                  Login
+                </Text>
               </TouchableOpacity>
             </View>
           )}
@@ -154,7 +92,9 @@ class LoginActions extends Component {
             onPress={() => this.props.navigation.navigate("CreateProfile")}
             title="Sign Up"
           >
-            <Text style={styles.buttonText}>Sign Up</Text>
+            <Text style={styles.buttonText}>
+              Sign Up
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
